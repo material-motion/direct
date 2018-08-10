@@ -1,0 +1,11 @@
+<md-toast class="spec-video-warning" ng-if="editing && showingVideoWarning">
+  <span class="md-toast-text" flex>
+    Video duration does not match timeline duration.
+  </span>
+  <md-button class="md-highlight" ng-click="toggleConfig()">
+    Settings
+  </md-button>
+  <md-button ng-click="toggleVideoWarning(false)">
+    Close
+  </md-button>
+</md-toast>

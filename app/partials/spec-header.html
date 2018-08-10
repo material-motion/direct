@@ -1,0 +1,6 @@
+<md-progress-linear class="header-progress-linear" md-mode="indeterminate" ng-show="uiState.saveInProgress"></md-progress-linear>
+
+<div id="sidebar" ng-class="{active: uiState.sidebar}" ng-include="'partials/spec-sidebar.html'" ng-controller="sidebarCtrl"></div>
+<div class="popup" ng-show="uiState.showingEmbedPopup" ng-include="'partials/spec-embed-details.html'"></div>
+
+<div id="overlay" ng-show="uiState.overlay" ng-click="closeOverlay()"></div>

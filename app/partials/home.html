@@ -1,0 +1,66 @@
+<ng-include src="'/partials/logo-header.html'"></ng-include>
+
+<main role="main" class="main-container">
+  <section class="group">
+    <h3 class="group-title">Quick Links</h3>
+
+    <div class="project-list">
+      <a class="project" href="/#/user/{{user}}">
+        <span class="project-title">My Directions</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+
+      <a class="project" href="/tutorial">
+        <span class="project-title">How do I use Direct?</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+  <section class="group">
+    <h3 class="group-title">Examples</h3>
+
+    <div class="project-list">
+      <a class="project" href="/#/spec/5000001">
+        <span class="project-title">"Opening a Message" Direction (Inbox)</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+
+      <a class="project" href="/#/group/gmail">
+        <span class="project-title">Directions by Group (Gmail)</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+
+      <a class="project" href="/#/user/schlem">
+        <span class="project-title">Directions by User (schlem@)</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<md-button class="fab md-fab" aria-label="New Spec" ng-click="goto('spec')">
+  <md-icon md-svg-src="img/ic_add_48px.svg"></md-icon>
+</md-button>
+
+<ng-include src="'/partials/footer.html'"></ng-include>
