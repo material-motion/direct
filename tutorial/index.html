@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=1024" />
+<title>How do I use Direct?</title>
+<link href="/tutorial/style.css" rel="stylesheet" type="text/css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,300,500' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+
+<div id="topline"></div>
+
+<div id="container">
+
+	<div id="header">How do I use Direct?</div>
+
+	<div id="textblock">As motion design becomes more and more prominent in apps, it’s becoming increasingly important to develop a standard for communicating direction from Motion Designers. Once an animation is finalized, simply handing off a video file to engineers makes it very difficult for them to recreate. Animations take a lot of engineering time to implement and are a lot of subtleties that could get lost in translation. As designers, it’s our responsibility to make sure that engineers have everything they need to quickly recreate this motion. Direct is a tool that helps motion designers provide clear, precise motion direction for engineers at Google.</div>
+
+	<div id="imageblock"><img src="/tutorial/direct1.png" height="380" width="1050"></div>
+
+	<div id="textblock">Direct’s timelines are simplified versions of After Effects timelines. While not an automated process (yet), it’s very easy to recreate timelines in Direct. Directions can be sorted by user or by group.</div>
+
+	<div id="textblock">To see all directions by a specific user, you can visit /user/username. This is useful for keeping track of your own or a specific individual’s motion directions.<br><br>
+To see all directions assigned to a group, visit /group/groupname. Group sorting is great if there are multiple motion designers for one app team. Directions from multiple users will show up here.</div>
+
+	<div id="imageblock"><img src="/tutorial/direct3.png" height="380" width="1050"></div>
+
+	<div id="textblock">To create a new direction, hit the plus button. This brings you to a blank direction in edit mode. Enter a group name and a direction title. Typing an existing group name will automatically add this direction to that group, while typing in a new group name will create a new group.<br><br>Set up your direction properties. The settings panel is built for designers familiar with After Effects. Duration is measured in frames, and you can adjust the grid line frequency using the minor and major divisions (for most directions, it’s recommended to use the default 1 / 5 setting). Frame rate is based on your After Effects composition. Most motion designers use 60fps or 30fps in their comps, where each frame lasts approximately 16.66ms or 33.33ms, respectively. However, if you would like these numbers to be easier to read, a 66.67fps option is included. This makes each frame have a duration of 15ms. Lastly, there’s an option to round off these values to whole milliseconds (“show exact timings”).</div>
+
+	<div id="imageblock"><img src="/tutorial/direct4.png" height="380" width="1050"></div>
+
+	<div id="textblock">It’s important to note that in edit mode, the graph along the x-axis displays frames, which is easy for After Effects conversions. Engineers, however, will see this graph displayed in milliseconds so it’s easier for them to read.</div>
+
+	<div id="imageblock"><img src="/tutorial/direct5.png" height="380" width="1050"></div>
+
+	<div id="textblock">To create a new line, click the small plus button on the left of the graph where you’d like the line to be created. When that line is highlighted, you’re able to draw on the graph. Click where you’d like to begin the line, then click again where you’d like to end it. This signifies a line of motion for a single asset. You can also resize the line by clicking and dragging from its left and right edges. To the right of this line, you can type in the asset that this motion is in reference to. To have a longer description for that’s happening for this transition, click the comment icon.<br><br>To set the easing type and color for the line, click the line. This brings up the settings panel. Easing can be selected from the drop-down menu, and the color selection is right below. Support will be added soon for custom easing, but the easing settings here are the most common Material Design uses.</div>
+
+	<div id="imageblock"><img src="/tutorial/direct6.png" height="380" width="1050"></div>
+
+	<div id="textblock">Engineers will also be able to click these lines when viewing a direction and see information useful for their needs. It will show the exact duration in milliseconds along with the type of easing. Clicking the information button will go into detail on how to achieve this easing on the platform that they’re building on, whether it be Android L, Pre-L, iOS or CSS. Links are associated with these strings for additional documentation.<br><br>Lastly, a reference video can be added to the direction. To add a video, click the video icon on the top right of the direction graph. Direct is set up to read shared Drive links. Find the video on your Drive, make sure sharing is enabled for all of Google.com, and copy the sharing URL for that video. Paste this URL in the dialogue. To make sure it works leave edit mode by clicking the pencil in the top right of the screen. Once out of edit mode, click the video icon. The video should play in a full-screen container.<br><br>In the future, Direct will make this timeline-drawing process automated by exporting directly from After Effects. It will also introduce live-updating video scrubbing while hovering over the timeline.</div>
+
+</div>
+
+</body>
+
+</html>

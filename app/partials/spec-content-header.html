@@ -1,0 +1,32 @@
+<div class="content-header" ng-class="{editing: editing}">
+  <div class="header-actions-left">
+    <div class="spec-title">
+      <a class="spec-title-link spec-group" href="/#/group/{{data.group}}" ng-hide="!data.group">{{data.group}}</a>
+      <span ng-hide="!data.group || !data.title">›</span>
+      <a class="spec-title-link" href="/#/spec/{{data.id}}" ng-hide="!data.title">{{data.title}}</a>
+    </div>
+    <div class="spec-subtitle" ng-hide="!spec.title">{{spec.title}}</div>
+  </div>
+
+  <div ng-if="!embedded" class="header-actions-right">
+    <md-button class="header-action md-icon-button" aria-label="Delete" ng-show="editing" ng-click="deleteProject($event, data)">
+      <md-icon md-svg-icon="img/ic_delete_grey600_48dp.svg"></md-icon>
+    </md-button>
+    <span id="js-action-settings" class="header-action icon-q_settings" ng-show="editing" ng-click="toggleConfig()"></span>
+    <span id="js-action-save" class="header-action icon-q_visibility" ng-show="editing" ng-click="previewSpec()"></span>
+
+    <md-button class="header-action md-icon-button" ng-hide="editing" aria-label="Export Code" ng-click="toggleCodePopup()">
+      <i class="material-icons">code</i>
+    </md-button>
+    <span id="js-action-edit" class="header-action icon-q_create" ng-hide="editing || !canEdit" ng-click="editSpec()"></span>
+
+    <a class="header-action spec-title-link" href="/#/user/{{data.permissions.owner}}" ng-hide="!data.permissions.owner || editing || canEdit">{{data.permissions.owner}}</a>
+  </div>
+</div>
+
+<div ng-if="!embedded">
+  <div class="popup settings-popup" ng-show="configuring" ng-include="'partials/spec-settings.html'"></div>
+  <div class="popup easing-details-popup" ng-show="showingCode" ng-include="'partials/spec-code.html'"></div>
+
+  <div id="overlay" ng-show="overlay" ng-click="closeOverlay()"></div>
+</div>

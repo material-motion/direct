@@ -1,0 +1,107 @@
+<div class="spec-content">
+  <div class="video-view" ng-show="spec.videoSrc">
+    <video preload="auto" loaded-data scrubbable="spec" ng-src="{{spec.videoSrc}}" ng-if="spec.videoSrc"></video>
+  </div>
+  <div class="timeline-view">
+    <!-- .content-header (only display on non-embed views) -->
+    <div ng-if="!embedded" ng-include="'partials/spec-content-header.html'"></div>
+    <!-- .spec-top-panel-->
+    <div class="spec-top-panel">
+      <div class="add-video" ng-class="{'no-video': !spec.videoSrc}" ng-show="editing">
+        <md-button class="add-video-fab md-fab" aria-label="Add Video" ng-click="toggleVideo()">
+          <md-icon md-svg-src="img/ic_movie_48px.svg"></md-icon>
+        </md-button>
+      </div>
+      <div class="spec-grid-containment">
+        <div class="spec-grid-spacer" ng-click="toggleDrawer(null, false)">
+          <canvas class="spec-grid" spec-grid="spec"></canvas>
+        </div>
+
+        <!-- Fake first row just for adding -->
+        <div class="spec-row first-row">
+          <div class="spec-item-wrap">
+            <canvas class="spec-grid" spec-grid="spec"></canvas>
+
+            <div class="new-row-toggle" ng-class="{adding: firstRow == addingRow}" ng-hide="!editing">
+              <span class="icon-q_add_circle" ng-click="toggleNewRow(firstRow)" ng-hide="addingRow && firstRow != addingRow">
+                <span class="bg-white"></span>
+              </span>
+            </div>
+
+            <div class="new-row-line" ng-hide="firstRow == addingRow"></div>
+
+            <div class="new-row-canvas-wrap" ng-class="{adding: firstRow == addingRow}">
+              <canvas class="new-row-canvas" spec-draw="spec" complete-fn="toggleNewRow(firstRow)" position="-1" ng-show="firstRow == addingRow"></canvas>
+            </div>
+          </div>
+        </div>
+        <!-- End fake first row -->
+
+        <div class="spec-row-wrap" ui-sortable="sortableOptions" ng-model="spec.rows">
+          <!-- Start Single Row -->
+          <div class="spec-row" ng-repeat="row in spec.rows" ng-include="'partials/spec-row.html'"></div>
+          <!-- End Single Row -->
+        </div>
+
+        <div class="spec-grid-spacer bottom" ng-click="toggleDrawer(null, false)">
+          <canvas class="spec-grid" spec-grid="spec"></canvas>
+        </div>
+
+        <!-- video scrub handle-->
+        <div class="spec-grid-scrubber" ng-if="canScrubVideo">
+          <div class="spec-grid-scrubber-bar"></div>
+          <div class="spec-grid-scrubber-handle">
+            <div class="spec-grid-scrubber-handle-shape"></div>
+          </div>
+        </div>
+        <!--/ video scrub handle-->
+      </div>
+    </div><!--/ .spec-top-panel-->
+
+    <div class="spec-labels-wrap">
+      <div class="spec-row">
+        <div class="spec-grid-labels labels-frames">
+          <div class="grid-label" ng-repeat="label in labels.frames track by $index">{{label}}</div>
+        </div>
+      </div>
+
+      <div class="spec-row">
+        <div class="spec-grid-labels labels-ms">
+          <div class="grid-label" ng-repeat="label in labels.ms track by $index">{{label}}</div>
+        </div>
+      </div>
+
+      <!-- video playback controls -->
+      <div class="video-controls" ng-if="spec.videoSrc">
+        <div class="video-control-group">
+          <md-button class="md-icon-button play-pause-button" ng-click="toggleVideoPaused()" aria-label="Play/Pause">
+            <i class="material-icons" ng-if="video.paused">play_arrow</i>
+            <i class="material-icons" ng-if="!video.paused">pause</i>
+          </md-button>
+          <span class="info-label current-time">{{(video.currentTime * 1000) | number:2}} / {{(video.duration * 1000) | number:2}} ms</span>
+        </div>
+        <div class="video-control-group">
+          <md-input-container class="playback-rate-container">
+            <md-select class="info-label playback-rate" ng-model="video.playbackRate" aria-label="Video playback rate">
+              <md-option ng-value="0.25">0.25x</md-option>
+              <md-option ng-value="0.5">0.5x</md-option>
+              <md-option ng-value="1">1x</md-option>
+              <md-option ng-value="2">2x</md-option>
+            </md-select>
+          </md-input-container>
+
+          <md-button class="md-icon-button loop-button" ng-class="{active: video.loop}" ng-click="toggleVideoLooping()">
+            <i class="material-icons">loop</i>
+          </md-button>
+        </div>
+      </div>
+      <!--/ video playback controls -->
+    </div>
+
+    <!--.spec-bottom-panel -->
+    <div class="spec-bottom-panel">
+
+      <div ng-include="'partials/spec-content-info.html'"></div>
+    </div><!--/ .spec-bottom-panel -->
+  </div><!--/ .timeline-view -->
+</div>

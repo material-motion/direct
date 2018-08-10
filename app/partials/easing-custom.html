@@ -1,0 +1,17 @@
+<div class="ease-line info-data">This animation is not using a Material curve.</div>
+
+<div class="ease-line" ng-show="tab == 'Android'">
+  <a class="info-label" href="https://developer.android.com/reference/android/support/v4/view/animation/PathInterpolatorCompat.html">PathInterpolatorCompat.create({{row.easingCustomOutgoing/100 | number:2}}, 0.00, {{(1-(row.easingCustomIncoming/100)) | number:2}}, 1.00)</a>
+</div>
+
+<div class="ease-line" ng-show="tab == 'iOS'">
+  <a class="info-label" href="https://developer.apple.com/library/mac/documentation/Cocoa/Reference/CAMediaTimingFunction_class">
+      [[CAMediaTimingFunction alloc] initWithControlPoints:{{row.easingCustomOutgoing/100 | number:2}}f :0.00f :{{(1-(row.easingCustomIncoming/100)) | number:2}}f :1.00f]
+  </a>
+</div>
+
+<div class="ease-line" ng-show="tab == 'CSS'">
+  <a class="info-label" href="http://cubic-bezier.com/#{{row.easingCustomOutgoing/100 | number:2}},0.0,{{(1-(row.easingCustomIncoming/100)) | number:2}},1">
+    cubic-bezier({{row.easingCustomOutgoing/100 | number:2}}, 0.00, {{(1-(row.easingCustomIncoming/100)) | number:2}}, 1.00);
+  </a>
+</div>

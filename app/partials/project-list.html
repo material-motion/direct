@@ -1,0 +1,36 @@
+<main role="main" class="main-container" ng-if="hasProjects" ng-class="{'selecting': selected.length}">
+  <section class="group" ng-repeat="group in projectGroups">
+    <a class="group-title-link" href="/#/group/{{group.handle}}"><h3 class="group-title"><b>{{group.title}}</b> Directions</h3></a>
+
+    <div class="project-list">
+      <md-checkbox class="project-checkbox" ng-checked="isSelected(project)" ng-click="toggleSelected(project)" ng-repeat="project in group.projects | orderBy:'title'">
+        <a class="project" href="/#/spec/{{project.id}}">
+          <span class="project-title">{{project.title}}</span>
+
+          <span class="project-owner">
+            <span>{{project.owner}}</span>
+          </span>
+
+          <span class="project-actions">
+            <md-button class="md-icon-button" aria-label="Duplicate" ng-click="duplicateProject($event, project)">
+              <md-icon md-svg-icon="img/ic_content_copy_grey600_48dp.svg"></md-icon>
+            </md-button>
+
+            <md-button ng-if="user === project.owner" class="md-icon-button" aria-label="Delete" ng-click="deleteProject($event, project)">
+              <md-icon md-svg-icon="img/ic_delete_grey600_48dp.svg"></md-icon>
+            </md-button>
+          </span>
+        </a>
+      </md-checkbox>
+    </div>
+  </section>
+  <div class="project-bottom-bar">
+    <a href="/#/spec/{{selectedToRouteParam()}}">
+      open selected as group ({{selected.length}})
+    </a>
+  </div>
+</main>
+
+<main role="main" class="main-container" ng-if="!hasProjects">
+  <div class="blank-slate">You don't have any projects yet. <a href="/#/spec/">Create your first project</a></div>
+</main>

@@ -1,0 +1,203 @@
+/*
+ * Copyright 2018 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@font-face {
+	font-family: 'q';
+	src:url('fonts/q.eot?-59l4eb');
+	src:url('fonts/q.eot?#iefix-59l4eb') format('embedded-opentype'),
+		url('fonts/q.woff?-59l4eb') format('woff'),
+		url('fonts/q.ttf?-59l4eb') format('truetype'),
+		url('fonts/q.svg?-59l4eb#q') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'q';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-q_add:before {
+	content: "\e600";
+}
+.icon-q_add_circle:before {
+	content: "\e601";
+}
+.icon-q_add_circle_outline:before {
+	content: "\e602";
+}
+.icon-q_archive:before {
+	content: "\e603";
+}
+.icon-q_arrow_back:before {
+	content: "\e604";
+}
+.icon-q_arrow_forward:before {
+	content: "\e605";
+}
+.icon-q_check:before {
+	content: "\e606";
+}
+.icon-q_check_box:before {
+	content: "\e607";
+}
+.icon-q_check_box_blank:before {
+	content: "\e608";
+}
+.icon-q_check_box_outline:before {
+	content: "\e609";
+}
+.icon-q_check_box_outline_blank:before {
+	content: "\e60a";
+}
+.icon-q_chevron_left:before {
+	content: "\e60b";
+}
+.icon-q_chevron_right:before {
+	content: "\e60c";
+}
+.icon-q_clear:before {
+	content: "\e60d";
+}
+.icon-q_close:before {
+	content: "\e60e";
+}
+.icon-q_copy:before {
+	content: "\e60f";
+}
+.icon-q_create:before {
+	content: "\e610";
+}
+.icon-q_delete:before {
+	content: "\e611";
+}
+.icon-q_done:before {
+	content: "\e612";
+}
+.icon-q_drawer:before {
+	content: "\e613";
+}
+.icon-q_expand_less:before {
+	content: "\e614";
+}
+.icon-q_expand_more:before {
+	content: "\e615";
+}
+.icon-q_heart:before {
+	content: "\e616";
+}
+.icon-q_heart_outline:before {
+	content: "\e617";
+}
+.icon-q_filter:before {
+	content: "\e618";
+}
+.icon-q_color_fill:before {
+	content: "\e619";
+}
+.icon-q_home:before {
+	content: "\e61a";
+}
+.icon-q_info:before {
+	content: "\e61b";
+}
+.icon-q_info_outline:before {
+	content: "\e61c";
+}
+.icon-q_comment:before {
+	content: "\e61d";
+}
+.icon-q_pin:before {
+	content: "\e61e";
+}
+.icon-q_label:before {
+	content: "\e61f";
+}
+.icon-q_label_outline:before {
+	content: "\e620";
+}
+.icon-q_lock:before {
+	content: "\e621";
+}
+.icon-q_lock_open:before {
+	content: "\e622";
+}
+.icon-q_lock_outline:before {
+	content: "\e623";
+}
+.icon-q_menu:before {
+	content: "\e624";
+}
+.icon-q_comment_empty:before {
+	content: "\e625";
+}
+.icon-q_movie:before {
+	content: "\e626";
+}
+.icon-q_print:before {
+	content: "\e627";
+}
+.icon-q_radio_button_off:before {
+	content: "\e628";
+}
+.icon-q_radio_button_on:before {
+	content: "\e629";
+}
+.icon-q_remove:before {
+	content: "\e62a";
+}
+.icon-q_remove_circle:before {
+	content: "\e62b";
+}
+.icon-q_remove_circle_outline:before {
+	content: "\e62c";
+}
+.icon-q_save:before {
+	content: "\e62d";
+}
+.icon-q_search:before {
+	content: "\e62e";
+}
+.icon-q_settings:before {
+	content: "\e62f";
+}
+.icon-q_sort:before {
+	content: "\e630";
+}
+.icon-q_star:before {
+	content: "\e631";
+}
+.icon-q_unfold_less:before {
+	content: "\e638";
+}
+.icon-q_unfold_more:before {
+	content: "\e639";
+}
+.icon-q_visibility:before {
+	content: "\e63a";
+}
+.icon-q_visibility_off:before {
+	content: "\e63b";
+}

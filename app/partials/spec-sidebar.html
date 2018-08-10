@@ -1,0 +1,17 @@
+<section class="sidebar-header" ng-click="goto('user/' + user)">
+  <h3>{{user}}'s</h3>
+  <h4>Directions</h4>
+</section>
+
+<section class="sidebar-main">
+  <div class="sidebar-section" ng-repeat="group in projectGroups">
+    <div class="sidebar-section-title"><a class="group-title-link" href="/#/group/{{group.title}}"><b>{{group.title}}</b> Directions</a></div>
+
+    <ul class="sidebar-section-list">
+      <li ng-repeat="project in group.projects | orderBy:'title'">
+        <a  href="/#/spec/{{project.id}}">{{project.title}}</a>
+      </li>
+    </ul>
+  </div>
+</section>
+

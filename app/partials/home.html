@@ -1,0 +1,34 @@
+<ng-include src="'/partials/logo-header.html'"></ng-include>
+
+<main role="main" class="main-container">
+  <section class="group">
+    <h3 class="group-title">Quick Links</h3>
+
+    <div class="project-list">
+      <a class="project" href="/#/user/{{user}}">
+        <span class="project-title">My Directions</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+
+      <a class="project" href="/tutorial">
+        <span class="project-title">How do I use Direct?</span>
+        <span class="project-owner">
+          <span class="project-edit">
+            <span class="icon-q_arrow_forward"></span>
+          </span>
+        </span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<md-button class="fab md-fab" aria-label="New Spec" ng-click="goto('spec')">
+  <md-icon md-svg-src="img/ic_add_48px.svg"></md-icon>
+</md-button>
+
+<ng-include src="'/partials/footer.html'"></ng-include>

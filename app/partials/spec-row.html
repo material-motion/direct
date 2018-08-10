@@ -1,0 +1,35 @@
+<div class="spec-item-wrap" ng-class="{active: row == selectedRow}">
+  <canvas class="spec-grid" spec-grid="spec"></canvas>
+
+  <div class="spec-item" ng-class="{resizing: row == resizingRow}" ng-click="toggleDrawer(row)">
+    <div class="item-canvas-wrap" spec-canvas="row" duration="spec.duration" colors="colors">
+      <div spec-property-tag-sizer class="spec-property-tag" ng-style="{'backgroundColor': row.color}"
+            ng-if="row.comment || !((row.tag.label === 'None') ||
+                    ((row.tag.label === 'Custom') &&
+                    (row.customTag === null || row.customTag === undefined || row.customTag === '')))">
+        <span ng-if="row.tag.label === 'Custom'">{{row.customTag}}</span>
+        <span ng-if="row.tag.label !== 'Custom' && row.tag.label !== 'None'">{{row.tag.label}}</span>
+        <span ng-if="row.comment" class="comment">{{row.comment}}</span>
+      </div>
+      <!-- <div class="item-canvas"></div> -->
+      <canvas class="item-canvas"></canvas>
+
+      <div resizer="left" resizer-item="row" resizer-spec="spec" class="resizer resizer-left" ng-hide="!editing"></div>
+
+      <div resizer="right" resizer-item="row" resizer-spec="spec" class="resizer resizer-right" ng-hide="!editing"></div>
+    </div>
+  </div>
+
+
+  <div class="new-row-toggle" ng-class="{adding: row == addingRow}" ng-hide="!editing">
+    <span class="icon-q_add_circle" ng-click="toggleNewRow(row)" ng-hide="addingRow && row != addingRow">
+      <span class="bg-white"></span>
+    </span>
+  </div>
+
+  <div class="new-row-line" ng-hide="row == addingRow"></div>
+
+  <div class="new-row-canvas-wrap" ng-class="{adding: row == addingRow}">
+    <canvas class="new-row-canvas" spec-draw="spec" complete-fn="toggleNewRow(row)" position="$index" ng-show="row == addingRow"></canvas>
+  </div>
+</div>
