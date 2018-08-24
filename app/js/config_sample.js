@@ -1,7 +1,7 @@
 (function (window) {
-  window.config = window.config || {};
+  window.__directConfig = window.__directConfig || {};
 
-  window.config.stagingDomain = 'staging.example.com';
-  window.config.productionDomain = 'example.com';
+  window.__directConfig.stagingDomain = 'staging.example.com';
+  window.__directConfig.productionDomain = 'example.com';
 
 }(this));
