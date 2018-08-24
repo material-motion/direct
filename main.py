@@ -65,7 +65,7 @@ class BaseHandler(webapp2.RequestHandler):
 
 class MainHandler(BaseHandler):
   def get(self):
-    if config['headers']:
+    if config is not None and 'headers' in config:
       for key, value in config['headers'].items():
         self.response.headers.add_header(key, value)
     self.render('index.html', {'title': 'Motion Spec'})
