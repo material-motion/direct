@@ -144,6 +144,22 @@ class UserHandler(webapp2.RequestHandler):
       # self.response.write('andershaig')
       self.response.set_status('403')
 
+class LoginHandler(webapp2.RequestHandler):
+  def get(self, id=None):
+    user = users.get_current_user()
+    if user:
+      self.redirect('/')
+    else:
+      self.redirect(users.create_login_url('/'))
+
+class LogoutHandler(webapp2.RequestHandler):
+  def get(self, id=None):
+    user = users.get_current_user()
+    if user:
+      self.redirect(users.create_logout_url('/'))
+    else:
+      self.redirect('/')
+
 # Setup Routes
 app = webapp2.WSGIApplication([
   # CLIENT SIDE PAGES (LET ANGULAR HANDLE ROUTING)
@@ -151,5 +167,7 @@ app = webapp2.WSGIApplication([
   # OTHER SERVER PAGES / ENDPOINTS
   (r'/api/spec', ApiHandler),
   (r'/api/spec/(\d+)', ApiHandler),
-  (r'/user', UserHandler)
+  (r'/user', UserHandler),
+  (r'/login', LoginHandler),
+  (r'/logout', LogoutHandler)
 ], debug=True)
