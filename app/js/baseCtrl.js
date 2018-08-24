@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-app.controller('baseCtrl', function ($scope, $http, $location, $mdDialog, Spec) {
+app.controller('baseCtrl', function ($scope, $http, $window, $location, $mdDialog, Spec) {
 
   $http({
     method: 'GET',
@@ -27,8 +27,7 @@ app.controller('baseCtrl', function ($scope, $http, $location, $mdDialog, Spec) 
     console.warn('> User Request Error');
     console.log(data);
 
-    // debug test user
-    $scope.user = 'test';
+    $window.location.href = '/login';
   });
 
   // Helpers
