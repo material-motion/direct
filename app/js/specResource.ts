@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// @ts-nocheck
+
 app.provider("Spec", function () {
   this.$get = [
     "$resource",
@@ -19,9 +21,8 @@ app.provider("Spec", function () {
     "localStorageService",
     "$timeout",
     function ($resource, envService, localStorageService, $timeout) {
-      let Spec;
       if (envService.is("production")) {
-        Spec = $resource(
+        var Spec = $resource(
           "/api/spec/:id",
           {},
           {
@@ -32,7 +33,7 @@ app.provider("Spec", function () {
         );
       } else {
         // not on a production environment, return mocked Spec with localStorage
-        Spec = {
+        var Spec = {
           query: function (params, callback) {
             console.log("localstorage query");
             $timeout(function () {
@@ -103,5 +104,4 @@ app.provider("Spec", function () {
       return Spec;
     },
   ];
-  return this.$get;
 });
