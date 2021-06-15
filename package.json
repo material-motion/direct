@@ -1,0 +1,46 @@
+{
+  "name": "direct",
+  "version": "0.10.0",
+  "description": "Direct is a tool that helps motion designers provide clear, precise motion direction for engineers.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "serve": "tsc && sudo  dev_appserver.py .",
+    "setup": "bower install"
+  },
+  "dependencies": {
+    "angular": "~1.4.5",
+    "angular-animate": "~1.4.5",
+    "angular-aria": "~1.4.5",
+    "angular-material": "~0.11.0",
+    "angular-resource": "~1.4.5",
+    "angular-route": "~1.4.5",
+    "angularytics": "0.3.0",
+    "hammerjs": "~2.0.4",
+    "jquery": "^3.1.1",
+    "angular-environment": "^1.0.8",
+    "angular-local-storage": "^0.7.1",
+    "angular-ui-sortable": "^0.17.1",
+    "js-throttle-debounce": "^0.1.1"
+  },
+  "devDependencies": {
+    "bower": "^1.8.0",
+    "json-server": "^0.9.6",
+    "rimraf": "^2.6.2",
+    "serve": "^5.1.2",
+    "ts-loader": "^3.2.0",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rodydavis/direct.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rodydavis/direct/issues"
+  },
+  "homepage": "https://github.com/rodydavis/direct#readme"
+}
