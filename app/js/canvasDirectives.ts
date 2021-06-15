@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+// @ts-nocheck
+
 /**
  * Spec Canvas Visuals to render bezier curves and other elements
  */
@@ -37,27 +39,27 @@ app.directive('specCanvas', function ($timeout) {
   // Draws the base bar and begin and end circles
   var drawBar = function (ctx, w, h) {
     // ctx.fillRect(0, h-10, 2, 10);   // Left Bar (debug)
-    ctx.fillRect(5, h-6, w-10, 2);     // Bottom Bar
+    ctx.fillRect(5, h - 6, w - 10, 2);     // Bottom Bar
     // ctx.fillRect(w-2, h-10, 2, 10); // Right Bar (debug)
 
     // Circle Params
-    var radius         = 5;         // Arc radius
-    var startAngle     = 0;         // Starting point on circle
-    var endAngle       = Math.PI*2; // End point on circle
+    var radius = 5;         // Arc radius
+    var startAngle = 0;         // Starting point on circle
+    var endAngle = Math.PI * 2; // End point on circle
 
     // Left Circle
     ctx.beginPath();
-    ctx.arc(5, h-5, radius, startAngle, endAngle);
+    ctx.arc(5, h - 5, radius, startAngle, endAngle);
     ctx.fill();
 
     // Right Circle
     ctx.beginPath();
-    ctx.arc(w-5, h-5, radius, startAngle, endAngle);
+    ctx.arc(w - 5, h - 5, radius, startAngle, endAngle);
     ctx.fill();
 
   }
 
-  var drawDiamond = function(ctx, w, h) {
+  var drawDiamond = function (ctx, w, h) {
 
     // translate
     ctx.translate(0, 7);
@@ -91,7 +93,7 @@ app.directive('specCanvas', function ($timeout) {
     }
 
     var duration = spec.duration / totalDuration * 100;
-    var delay =  spec.delay / totalDuration * 100;
+    var delay = spec.delay / totalDuration * 100;
 
     wrap.css({
       width: duration + '%',
@@ -133,55 +135,55 @@ app.directive('specCanvas', function ($timeout) {
     switch (curve) {
       case 'curve':
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.bezierCurveTo(5, ch-5, cw/2, ((ch-5)*-1), cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.bezierCurveTo(5, ch - 5, cw / 2, ((ch - 5) * -1), cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'quantum':
         inValue = 0.8;
         outValue = 0.4;
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.bezierCurveTo( (cw*outValue)+5, ch-5, ((1-inValue)*cw)-5, 0, cw-5, 0);
-        ctx.lineTo(cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.bezierCurveTo((cw * outValue) + 5, ch - 5, ((1 - inValue) * cw) - 5, 0, cw - 5, 0);
+        ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'incoming':
         inValue = 0.8;
         outValue = 0;
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.bezierCurveTo( (cw*outValue)+5, ch-5, ((1-inValue)*cw)-5, 0, cw-5, 0);
-        ctx.lineTo(cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.bezierCurveTo((cw * outValue) + 5, ch - 5, ((1 - inValue) * cw) - 5, 0, cw - 5, 0);
+        ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'outgoing':
         inValue = 0;
         outValue = 0.4;
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.bezierCurveTo( (cw*outValue)+5, ch-5, ((1-inValue)*cw)-5, 0, cw-5, 0);
-        ctx.lineTo(cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.bezierCurveTo((cw * outValue) + 5, ch - 5, ((1 - inValue) * cw) - 5, 0, cw - 5, 0);
+        ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'linear':
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.lineTo(cw-5, 0);
-        ctx.lineTo(cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.lineTo(cw - 5, 0);
+        ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'custom':
         inValue = spec.easingCustomIncoming / 100;
         outValue = spec.easingCustomOutgoing / 100;
         ctx.beginPath();
-        ctx.moveTo(5, ch-5);
-        ctx.bezierCurveTo( (cw*outValue)+5, ch-5, ((1-inValue)*cw)-5, 0, cw-5, 0);
-        ctx.lineTo(cw-5, ch-5);
+        ctx.moveTo(5, ch - 5);
+        ctx.bezierCurveTo((cw * outValue) + 5, ch - 5, ((1 - inValue) * cw) - 5, 0, cw - 5, 0);
+        ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
       case 'none':
-        ctx.fillRect(5, 0, cw-10, ch-5);
+        ctx.fillRect(5, 0, cw - 10, ch - 5);
         break;
       default:
         break;
@@ -208,7 +210,7 @@ app.directive('specCanvas', function ($timeout) {
       }, true);
 
       // Window Width Changes
-      $(window).resize( function () {
+      $(window).resize(function () {
         render(wrap, canvas, scope.specCanvas, scope.duration);
       });
 
@@ -282,8 +284,8 @@ app.directive('specGrid', function ($timeout) {
     ctx.lineTo(1, ch);
 
     // Always draw end
-    ctx.moveTo(cw-1, 0);
-    ctx.lineTo(cw-1, ch);
+    ctx.moveTo(cw - 1, 0);
+    ctx.lineTo(cw - 1, ch);
 
     ctx.strokeStyle = '#DDDDDD';
     ctx.lineWidth = 2;
@@ -306,7 +308,7 @@ app.directive('specGrid', function ($timeout) {
       }, true);
 
       // Window Width Changes
-      $(window).resize( function () {
+      $(window).resize(function () {
         if (scope.specGrid && scope.specGrid !== undefined) {
           render(canvas, scope.specGrid);
         }
@@ -388,8 +390,8 @@ app.directive('specDraw', function ($timeout, $document) {
 
     // Draw end if the duration is a multiple of 75ms
     if (ms % majorMs === 0) {
-      ctx.moveTo(cw-1, 0);
-      ctx.lineTo(cw-1, ch);
+      ctx.moveTo(cw - 1, 0);
+      ctx.lineTo(cw - 1, ch);
     }
 
     ctx.strokeStyle = '#E9E0EB';
@@ -401,10 +403,10 @@ app.directive('specDraw', function ($timeout, $document) {
     var ctx = canvas.get(0).getContext('2d');
 
     ctx.beginPath();
-    var y              = 30;        // y coordinate
-    var radius         = 5;         // Arc radius
-    var startAngle     = 0;         // Starting point on circle
-    var endAngle       = Math.PI*2; // End point on circle
+    var y = 30;        // y coordinate
+    var radius = 5;         // Arc radius
+    var startAngle = 0;         // Starting point on circle
+    var endAngle = Math.PI * 2; // End point on circle
 
     ctx.arc(x, y, radius, startAngle, endAngle);
     ctx.fillStyle = '#CE93D8';
@@ -492,17 +494,17 @@ app.directive('specDraw', function ($timeout, $document) {
         $document.on('mouseup', mouseup);
       });
 
-      var inBounds = function(event) {
+      var inBounds = function (event) {
         var y = event.pageY;
         var x = event.pageX;
-        var offsetLeft = getLeft(element[0])-x;
-        var offsetTop = getTop(element[0])-y;
+        var offsetLeft = getLeft(element[0]) - x;
+        var offsetTop = getTop(element[0]) - y;
 
         var padding = 20;
 
-        if ((offsetLeft > padding || offsetLeft < -canvas.width()-padding) ||
-            (offsetTop > padding || offsetTop < -canvas.height()-padding)) {
-            return false;
+        if ((offsetLeft > padding || offsetLeft < -canvas.width() - padding) ||
+          (offsetTop > padding || offsetTop < -canvas.height() - padding)) {
+          return false;
         }
 
         return true;
@@ -607,7 +609,7 @@ app.directive('specDraw', function ($timeout, $document) {
       }, true);
 
       // Window Width Changes
-      $(window).resize( function () {
+      $(window).resize(function () {
         if (scope.specDraw && scope.specDraw !== undefined) {
           render(canvas, scope.specDraw);
         }
@@ -631,7 +633,7 @@ app.directive('specDraw', function ($timeout, $document) {
 app.directive('specTip', function () {
   var render = function (tip, spec, totalDuration) {
     var duration = spec.duration / totalDuration;
-    var delay =  spec.delay / totalDuration;
+    var delay = spec.delay / totalDuration;
     var containerWidth = $('.spec-item-wrap').width();
     var offset = delay + (duration / 2);
     var pixelOffset = offset * containerWidth;
@@ -658,7 +660,7 @@ app.directive('specTip', function () {
       }, true);
 
       // Window Width Changes
-      $(window).resize( function () {
+      $(window).resize(function () {
         render(tip, scope.specTip, scope.duration);
       });
     }

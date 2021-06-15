@@ -12,8 +12,11 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-app.filter('nl2br', ['$sce', function ($sce) {
-  return function (text) {
-    return text ? $sce.trustAsHtml(text.replace(/\n/g, '<br/>')) : '';
-  };
-}]);
+app.filter("nl2br", [
+  "$sce",
+  function ($sce) {
+    return function (text) {
+      return text ? $sce.trustAsHtml(text.replace(/\n/g, "<br/>")) : "";
+    };
+  },
+]);
