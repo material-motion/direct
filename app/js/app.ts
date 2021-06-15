@@ -20,6 +20,10 @@ if (window) {
   Object.assign(config, window.__directConfig);
 }
 
+declare const gapi;
+declare const google;
+declare const angular;
+
 const app = angular.module("spec", [
   "ngRoute",
   "ngResource",

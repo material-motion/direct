@@ -26,9 +26,6 @@ var pickerApiLoaded = false;
 var oauthToken;
 var scopeModel;
 
-declare const gapi;
-declare const google;
-
 function onApiLoad() {
   gapi.load("auth");
   gapi.load("picker", { callback: onPickerApiLoad });

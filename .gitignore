@@ -2,7 +2,7 @@ bower_components
 *.pyc
 
 .DS_Store
-
+app/js/*.js
 config.js
 config.yaml
 
