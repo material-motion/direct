@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-app.controller('sidebarCtrl', function ($scope, Spec, projectListService) {
+app.controller("sidebarCtrl", function ($scope, Spec, projectListService) {
   // Project Listing for Sidebar
 
   // Updates sidebar with new items and edits
-  $scope.$on('refreshSidebar', function() {
+  $scope.$on("refreshSidebar", function () {
     $scope.projectGroups = [];
-    Spec.query({owner: $scope.user}, function (specs) {
+    Spec.query({ owner: $scope.user }, function (specs) {
       $scope.projectGroups = [];
       angular.forEach(specs, function (spec, index) {
         projectListService.addProject($scope, spec);

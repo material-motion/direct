@@ -12,16 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-app.service('projectListService', function() {
-
+app.service("projectListService", function () {
   // multispec selection
 
   this.toggleSelected = function ($scope, item) {
     var idx = $scope.selected.indexOf(item);
     if (idx > -1) {
       $scope.selected.splice(idx, 1);
-    }
-    else {
+    } else {
       $scope.selected.push(item);
     }
   };
@@ -30,10 +28,12 @@ app.service('projectListService', function() {
     return $scope.selected.indexOf(item) > -1;
   };
 
-  this.selectedToRouteParam = function($scope) {
-    return $scope.selected.map(function(spec) {
-      return spec.id;
-    }).join('+');
+  this.selectedToRouteParam = function ($scope) {
+    return $scope.selected
+      .map(function (spec) {
+        return spec.id;
+      })
+      .join("+");
   };
 
   // project list construction
@@ -42,12 +42,14 @@ app.service('projectListService', function() {
     var i = $scope.projectGroups.length;
     var projectAdded = false;
 
-    spec.group = spec.group || '';
+    spec.group = spec.group || "";
 
     // Loop through all groups
     while (i--) {
       // If title matches, add to projects array
-      if ($scope.projectGroups[i].title.toLowerCase() === spec.group.toLowerCase()) {
+      if (
+        $scope.projectGroups[i].title.toLowerCase() === spec.group.toLowerCase()
+      ) {
         $scope.projectGroups[i].projects.push(spec);
         projectAdded = true;
       }
@@ -58,17 +60,20 @@ app.service('projectListService', function() {
       var grp = {
         title: spec.group,
         projects: [],
-        handle: spec.group
-      }
+        handle: spec.group,
+      };
 
       grp.projects.push(spec);
       $scope.projectGroups.push(grp);
     }
-  }
+  };
 
   this.deleteProject = function ($scope, project) {
     for (var i = 0; i < $scope.projectGroups.length; i++) {
-      if ($scope.projectGroups[i].title.toLowerCase() === project.group.toLowerCase()) {
+      if (
+        $scope.projectGroups[i].title.toLowerCase() ===
+        project.group.toLowerCase()
+      ) {
         var group = $scope.projectGroups[i];
 
         // Delete project from array
@@ -90,8 +95,7 @@ app.service('projectListService', function() {
             }
           }
         }
-
       }
     }
-  }
+  };
 });

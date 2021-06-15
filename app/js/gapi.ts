@@ -16,18 +16,19 @@
   These API keys are Javascript API keys that must be included client side.
   We have an HTTP referrer whitelist server-side to prevent quota misuse.
  */
-var developerKey = 'AIzaSyAwMg3spfEqfQyCUR1OXfyCAse3GzxpxJM';
-var clientId = "103309234391-nak808obap92p3i1cslqi1oubsfnub1m.apps.googleusercontent.com"
+var developerKey = "AIzaSyAwMg3spfEqfQyCUR1OXfyCAse3GzxpxJM";
+var clientId =
+  "103309234391-nak808obap92p3i1cslqi1oubsfnub1m.apps.googleusercontent.com";
 var appId = "103309234391";
-var scope = ['https://www.googleapis.com/auth/drive.readonly'];
+var scope = ["https://www.googleapis.com/auth/drive.readonly"];
 
 var pickerApiLoaded = false;
 var oauthToken;
 var scopeModel;
 
 function onApiLoad() {
-  gapi.load('auth');
-  gapi.load('picker', {'callback': onPickerApiLoad});
+  gapi.load("auth");
+  gapi.load("picker", { callback: onPickerApiLoad });
 }
 
 function loadPicker(model) {
@@ -36,11 +37,15 @@ function loadPicker(model) {
 }
 
 function authorize(immediate) {
-  window.gapi.auth.authorize({
-    'client_id': clientId,
-    'scope': scope,
-    'immediate': immediate
-  }, showPicker);
+  // @ts-ignore
+  window.gapi.auth.authorize(
+    {
+      client_id: clientId,
+      scope: scope,
+      immediate: immediate,
+    },
+    showPicker
+  );
 }
 
 function onPickerApiLoad() {
@@ -64,13 +69,13 @@ function showPicker(authResult) {
         .setOAuthToken(oauthToken)
         .setDeveloperKey(developerKey)
         .setCallback(pickerCallback)
-        .setTitle('Select a Video')
+        .setTitle("Select a Video")
         .build();
       picker.setVisible(true);
     }
-  } else if (authResult.error === 'immediate_failed') {
+  } else if (authResult.error === "immediate_failed") {
     debugger;
-    authorize(false)
+    authorize(false);
   }
 }
 

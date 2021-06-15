@@ -12,13 +12,13 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
+app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
   // Initial Config
   $scope.uiState = {
     overlay: false,
     sidebar: false,
     saveInProgress: false,
-    showingEmbedPopup: false
+    showingEmbedPopup: false,
   };
 
   // Constants
@@ -29,22 +29,21 @@ app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
   // Initial Data Setup
   if ($routeParams.id) {
     $scope.multispec = $routeParams.id.split(/\D+/g);
-  }
-  else {
-    $scope.multispec = [ null ]; // create an empty spec for editing
+  } else {
+    $scope.multispec = [null]; // create an empty spec for editing
   }
 
   if ($routeParams.embed) {
     $scope.embedded = true;
   }
 
-  $scope.embedUrl = $location.absUrl().split('?')[0] + '?embed';
+  $scope.embedUrl = $location.absUrl().split("?")[0] + "?embed";
 
   // UI state
   $scope.showSidebar = function () {
     $scope.uiState.sidebar = true;
     $scope.uiState.overlay = true;
-  }
+  };
 
   $scope.closeOverlay = function () {
     // Close sidebar
@@ -55,106 +54,118 @@ app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
 
     // Close overlay
     $scope.uiState.overlay = false;
-  }
+  };
 
   $scope.toggleEmbedPopup = function () {
     $scope.uiState.showingEmbedPopup = !$scope.uiState.showingEmbedPopup;
     $scope.uiState.overlay = $scope.uiState.showingEmbedPopup;
-  }
+  };
 
   // Manually redraw grid and grid items
-  $scope.refreshCanvas = (function () {
-    $scope.$broadcast('refreshCanvas');
-  }).debounce(100);
+  $scope.refreshCanvas = function () {
+    $scope.$broadcast("refreshCanvas");
+  }
+    // @ts-ignore
+    .debounce(100);
 
   // reload project list in menu (see sidebarCtrl.js)
-  $scope.refreshSidebar = (function() {
-    $scope.$broadcast('refreshSidebar');
-  }).debounce(100);
+  $scope.refreshSidebar = function () {
+    $scope.$broadcast("refreshSidebar");
+  }
+    // @ts-ignore
+    .debounce(100);
 
   // Helpers
-  $scope.deleteProject = function(ev, data) {
-    $scope.$parent.deleteProject(ev, data, function() {
+  $scope.deleteProject = function (ev, data) {
+    $scope.$parent.deleteProject(ev, data, function () {
       if ($scope.multispec.length > 1) {
         var deletedIdx = $scope.multispec.indexOf(data.id.toString());
         if (deletedIdx > -1) {
           $scope.multispec.splice(deletedIdx, 1);
         }
-        $scope.goto('/spec/' + $scope.multispec.join('+'));
-      }
-      else {
-        $scope.goto('/user/' + $scope.user);
+        $scope.goto("/spec/" + $scope.multispec.join("+"));
+      } else {
+        $scope.goto("/user/" + $scope.user);
       }
     });
-  }
+  };
 
   // Constants
 
   // Colors
-  $scope.colors = ['#E51C23', '#9C27B0', '#5677FC', '#00BCD4', '#259B24', '#CDDC39', '#FFC107', '#795548', '#737373'];
+  $scope.colors = [
+    "#E51C23",
+    "#9C27B0",
+    "#5677FC",
+    "#00BCD4",
+    "#259B24",
+    "#CDDC39",
+    "#FFC107",
+    "#795548",
+    "#737373",
+  ];
 
   // Easing
   $scope.easingOptions = [
     {
-      label: '80% Incoming, 40% Outgoing',
-      value: 'quantum'
+      label: "80% Incoming, 40% Outgoing",
+      value: "quantum",
     },
     {
-      label: '80% Incoming Only',
-      value: 'incoming'
+      label: "80% Incoming Only",
+      value: "incoming",
     },
     {
-      label: '40% Outgoing Only',
-      value: 'outgoing'
+      label: "40% Outgoing Only",
+      value: "outgoing",
     },
     {
-      label: 'Linear',
-      value: 'linear'
+      label: "Linear",
+      value: "linear",
     },
     {
-      label: 'Custom Curve',
-      value: 'custom'
-    }
+      label: "Custom Curve",
+      value: "custom",
+    },
   ];
 
   // Property Tags
   $scope.tagOptions = [
     {
-      label: 'Position-x',
-      value: 'position-x'
+      label: "Position-x",
+      value: "position-x",
     },
     {
-      label: 'Position-y',
-      value: 'position-y'
+      label: "Position-y",
+      value: "position-y",
     },
     {
-      label: 'Position-xy',
-      value: 'position-xy'
+      label: "Position-xy",
+      value: "position-xy",
     },
     {
-      label: 'Scale',
-      value: 'scale'
+      label: "Scale",
+      value: "scale",
     },
     {
-      label: 'Opacity',
-      value: 'opacity'
+      label: "Opacity",
+      value: "opacity",
     },
     {
-      label: 'Rotation',
-      value: 'rotation'
+      label: "Rotation",
+      value: "rotation",
     },
     {
-      label: 'Mask',
-      value: 'mask'
+      label: "Mask",
+      value: "mask",
     },
     {
-      label: 'Custom',
-      value: 'custom'
+      label: "Custom",
+      value: "custom",
     },
     {
-      label: 'None',
-      value: 'none'
-    }
+      label: "None",
+      value: "none",
+    },
   ];
-
 });
