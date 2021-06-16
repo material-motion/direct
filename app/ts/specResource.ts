@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { app } from "./app.js";
+
 app.provider("Spec", function () {
   // @ts-ignore
   this.$get = [

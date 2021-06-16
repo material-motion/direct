@@ -4,8 +4,10 @@
   "description": "Direct is a tool that helps motion designers provide clear, precise motion direction for engineers.",
   "private": true,
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "serve": "tsc && sudo dev_appserver.py .",
+    "ts": "tsc",
+    "serve": "npm run ts && sudo dev_appserver.py .",
     "setup": "bower install"
   },
   "dependencies": {

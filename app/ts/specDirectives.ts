@@ -12,6 +12,8 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { app } from "./app.js";
+
 /*
  * initializes wrapperElem for specTabCtrl scope
  * element is a jqLite wrapper around an element with class=spec-tab-ctrl-wrap
