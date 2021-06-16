@@ -12,6 +12,10 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import { app } from "./app.js";
+
+declare const angular;
+
 app.controller(
   "groupCtrl",
   function ($scope, $routeParams, Spec, projectListService) {

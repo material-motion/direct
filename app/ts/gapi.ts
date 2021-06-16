@@ -16,6 +16,10 @@
   These API keys are Javascript API keys that must be included client side.
   We have an HTTP referrer whitelist server-side to prevent quota misuse.
  */
+
+declare const gapi;
+declare const google;
+
 var developerKey = "AIzaSyAwMg3spfEqfQyCUR1OXfyCAse3GzxpxJM";
 var clientId =
   "103309234391-nak808obap92p3i1cslqi1oubsfnub1m.apps.googleusercontent.com";
