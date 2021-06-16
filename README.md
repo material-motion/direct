@@ -15,30 +15,24 @@ Disclaimer: This is not an officially supported Google product.
 3. Install bower
 
 ``` shell
-npm install -g bower
+npm install
 ```
 
-4. Install dependencies
-
-``` shell
-bower install
-```
-
-5. Populate config files
+4. Populate config files
 
     Rename `config_sample.yaml` to `config.yaml`
 
     (this file can be left blank for most users)
 
 
-    Rename `app/js/config_sample.js` to `app/js/config.js`
+    Rename `app/js/config_sample.ts` to `app/js/config.ts`
 
     Fill in values for `window.__directConfig.stagingDomain` and `window.__directConfig.productionDomain` if you intend to use staging and production environments. Otherwise, they can be left as empty strings.
 
 
-6. Run a local instance
+5. Run a local instance
 ``` shell
-dev_appserver.py .
+npm run serve
 ```
 
-7. View the server at http://localhost:8080/
+6. View the server at http://localhost:8080/

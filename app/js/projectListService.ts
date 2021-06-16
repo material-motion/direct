@@ -14,7 +14,7 @@
 
 app.service("projectListService", function () {
   // multispec selection
-
+  // @ts-ignore
   this.toggleSelected = function ($scope, item) {
     var idx = $scope.selected.indexOf(item);
     if (idx > -1) {
@@ -23,11 +23,11 @@ app.service("projectListService", function () {
       $scope.selected.push(item);
     }
   };
-
+  // @ts-ignore
   this.isSelected = function ($scope, item) {
     return $scope.selected.indexOf(item) > -1;
   };
-
+  // @ts-ignore
   this.selectedToRouteParam = function ($scope) {
     return $scope.selected
       .map(function (spec) {
@@ -37,7 +37,7 @@ app.service("projectListService", function () {
   };
 
   // project list construction
-
+  // @ts-ignore
   this.addProject = function ($scope, spec) {
     var i = $scope.projectGroups.length;
     var projectAdded = false;
@@ -62,12 +62,12 @@ app.service("projectListService", function () {
         projects: [],
         handle: spec.group,
       };
-
+      // @ts-ignore
       grp.projects.push(spec);
       $scope.projectGroups.push(grp);
     }
   };
-
+  // @ts-ignore
   this.deleteProject = function ($scope, project) {
     for (var i = 0; i < $scope.projectGroups.length; i++) {
       if (

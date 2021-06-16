@@ -12,8 +12,6 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-// @ts-nocheck
-
 /*
  * initializes wrapperElem for specTabCtrl scope
  * element is a jqLite wrapper around an element with class=spec-tab-ctrl-wrap
@@ -127,7 +125,9 @@ app.directive("scrubbable", function () {
       var updateTimestamp = function () {
         // request angular to update value for video.currentTime in UI
         scope.$apply();
-      }.throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
+      }
+        // @ts-ignore
+        .throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
 
       video.addEventListener("seeking", function () {
         window.requestAnimationFrame(onTimeUpdate);
@@ -140,6 +140,7 @@ app.directive("scrubbable", function () {
       var constrainScrubberX = function (x) {
         var gridWidth = $(gridContainment).find(".spec-grid").width();
         var durationX = secondsToX(video.duration);
+        // @ts-ignore
         var maxAllowedX = Math.min(durationX, gridWidth);
         x = Math.min(x, maxAllowedX);
         x = Math.max(x, 0);
@@ -165,11 +166,14 @@ app.directive("scrubbable", function () {
           video.currentTime = timestampSeconds;
           window.requestAnimationFrame(onTimeUpdate);
         }
-      }.throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
+      }
+        // @ts-ignore
+        .throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
 
       // listen to mouse events on the scrub handle
       $(gridContainment).one("mouseover", ".spec-grid-scrubber", function () {
         var scrubber = $(this);
+        // @ts-ignore
         scrubber.draggable({
           axis: "x",
           cursorAt: { left: 0 },

@@ -5,7 +5,7 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "serve": "tsc && sudo  dev_appserver.py .",
+    "serve": "tsc && sudo dev_appserver.py .",
     "setup": "bower install"
   },
   "dependencies": {
@@ -23,6 +23,7 @@
     "js-throttle-debounce": "^0.1.1"
   },
   "devDependencies": {
+    "@types/jquery": "^3.5.5",
     "bower": "^1.8.0",
     "json-server": "^0.9.6",
     "rimraf": "^2.6.2",
