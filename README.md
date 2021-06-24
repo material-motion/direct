@@ -12,7 +12,7 @@ Disclaimer: This is not an officially supported Google product.
 
 2. Install [node.js and npm](https://nodejs.org/)
 
-3. Install bower
+3. Install dependencies
 
 ``` shell
 npm install
