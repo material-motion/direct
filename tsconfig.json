@@ -2,7 +2,11 @@
   "compilerOptions": {
     "target": "ES2015",
     "module": "ESNEXT",
-    "lib": ["es5", "es6", "dom"],
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
     "rootDir": "app/ts",
     "outDir": "app/js",
     "strict": true,

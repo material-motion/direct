@@ -6,8 +6,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "ts:watch": "tsc --watch",
     "ts": "tsc",
-    "serve": "npm run ts && sudo dev_appserver.py .",
+    "start": "npm run ts ; sudo dev_appserver.py .",
     "setup": "bower install"
   },
   "dependencies": {
@@ -27,22 +28,23 @@
   "devDependencies": {
     "@types/jquery": "^3.5.5",
     "bower": "^1.8.0",
+    "gts": "^3.1.0",
     "json-server": "^0.9.6",
     "rimraf": "^2.6.2",
     "serve": "^5.1.2",
     "ts-loader": "^3.2.0",
-    "typescript": "^2.6.2",
+    "typescript": "^3.3.1",
     "webpack": "^3.10.0"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rodydavis/direct.git"
+    "url": "git+https://github.com/material-motion/direct.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/rodydavis/direct/issues"
+    "url": "https://github.com/material-motion/direct/issues"
   },
-  "homepage": "https://github.com/rodydavis/direct#readme"
+  "homepage": "https://github.com/material-motion/direct#readme"
 }

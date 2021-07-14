@@ -1,5 +1,7 @@
 # Direct
 
+[![Code Style: Google](https://img.shields.io/badge/code%20style-google-blueviolet.svg)](https://github.com/google/gts)
+
 Direct is a tool that helps motion designers provide clear, precise motion direction for engineers.
 
 As motion design becomes more and more prominent in apps, it’s becoming increasingly important to develop a standard for communicating direction from motion designers. Once an animation is finalized, simply handing off a video file to engineers makes it very difficult for them to recreate. Animations take a lot of engineering time to implement and there are a lot of subtleties that could get lost in translation. As designers, it’s our responsibility to make sure that engineers have everything they need to quickly recreate this motion.
