@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "ES2015",
+    "module": "ESNEXT",
+    "lib": [
+      "es5",
+      "es6",
+      "dom"
+    ],
+    "rootDir": "app/ts",
+    "outDir": "app/js",
+    "strict": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true
+  },
+  "include": [
+    "app/ts/**/*.ts",
+    "third_party/**/*.ts",
+    "node_modules/@types/**/*.ts"
+  ]
+}

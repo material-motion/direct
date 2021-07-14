@@ -17,59 +17,62 @@ api_version: 1
 threadsafe: yes
 
 handlers:
-# Testing
-- url: /test
-  static_files: test/index.html
-  upload: test/index.html
+  # Testing
+  - url: /test
+    static_files: test/index.html
+    upload: test/index.html
 
-# Tutorial
-- url: /tutorial
-  static_dir: tutorial
+  # Tutorial
+  - url: /tutorial
+    static_dir: tutorial
 
-- url: /tutorial
-  static_files: tutorial/index.html
-  upload: tutorial/index.html
+  - url: /tutorial
+    static_files: tutorial/index.html
+    upload: tutorial/index.html
 
-# App Routing
-- url: /favicon\.ico
-  static_files: favicon.ico
-  upload: favicon\.ico
+  # App Routing
+  - url: /favicon\.ico
+    static_files: favicon.ico
+    upload: favicon\.ico
 
-- url: /robots.txt
-  static_files: robots.txt
-  upload: robots.txt
+  - url: /robots.txt
+    static_files: robots.txt
+    upload: robots.txt
 
-- url: /app
-  static_dir: app
+  - url: /app
+    static_dir: app
 
-- url: /bower_components
-  static_dir: bower_components
+  - url: /node_modules
+    static_dir: node_modules
 
-- url: /css
-  static_dir: app/css
+  - url: /third_party
+    static_dir: third_party
 
-- url: /img
-  static_dir: app/img
+  - url: /css
+    static_dir: app/css
 
-- url: /js
-  static_dir: app/js
+  - url: /img
+    static_dir: app/img
 
-- url: /partials
-  static_dir: app/partials
+  - url: /js
+    static_dir: app/js
 
-- url: .*
-  script: main.app
+  - url: /partials
+    static_dir: app/partials
+
+  - url: .*
+    script: main.app
 
 # Libraries
 libraries:
-- name: webapp2
-  version: "2.5.2"
+  - name: webapp2
+    version: "2.5.2"
 
-- name: jinja2
-  version: latest
+  - name: jinja2
+    version: latest
 
-- name: pycrypto
-  version: "2.6"
+  - name: pycrypto
+    version: "2.6"
 
 # Don't Upload
 skip_files: |
