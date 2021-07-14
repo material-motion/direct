@@ -1,26 +1,26 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
 /*
  * initializes wrapperElem for specTabCtrl scope
  * element is a jqLite wrapper around an element with class=spec-tab-ctrl-wrap
  */
-app.directive("specTabCtrlWrap", function () {
+app.directive('specTabCtrlWrap', function () {
   return {
-    restrict: "C",
+    restrict: 'C',
     link: function ($scope, element, attrs) {
       $scope.wrapperElem = element;
     },
@@ -31,20 +31,20 @@ app.directive("specTabCtrlWrap", function () {
  * enables drag-to-reorder rows,
  * and clicking outside of containment to close drawer
  */
-app.directive("specGridContainment", function () {
+app.directive('specGridContainment', function () {
   return {
-    restrict: "C",
+    restrict: 'C',
     link: function ($scope, element, attrs) {
       // options for drag-to-reorder rows
       $scope.sortableOptions = {
-        axis: "y",
-        handle: ".item-canvas",
-        tolerance: "pointer",
+        axis: 'y',
+        handle: '.item-canvas',
+        tolerance: 'pointer',
         disabled: !$scope.editing,
         containment: element,
       };
 
-      $scope.$watch("editing", function () {
+      $scope.$watch('editing', function () {
         $scope.sortableOptions.disabled = !$scope.editing;
       });
     },
@@ -54,27 +54,27 @@ app.directive("specGridContainment", function () {
 /*
  * sizes the spec property tags on the timeline view
  */
-app.directive("specPropertyTagSizer", function ($timeout) {
+app.directive('specPropertyTagSizer', function ($timeout) {
   return {
-    restrict: "A",
+    restrict: 'A',
     link: function ($scope, element, attrs) {
       var updateSize = function () {
-        var itemCanvasWrap = element.parent(".item-canvas-wrap");
+        var itemCanvasWrap = element.parent('.item-canvas-wrap');
         if (itemCanvasWrap.width() > 200) {
-          element.css("max-width", "100%");
+          element.css('max-width', '100%');
         } else {
-          element.css("max-width", 200);
+          element.css('max-width', 200);
 
           var canvasMargin =
             itemCanvasWrap.outerWidth(true) - itemCanvasWrap.outerWidth();
-          var specItem = element.closest(".spec-item");
+          var specItem = element.closest('.spec-item');
           if (canvasMargin + element.outerWidth() > specItem.width()) {
             var offset =
               specItem.width() - (canvasMargin + element.outerWidth());
             if (Math.abs(offset) < canvasMargin) {
-              element.css("margin-left", offset);
+              element.css('margin-left', offset);
             } else {
-              element.css("margin-left", 0);
+              element.css('margin-left', 0);
             }
           }
         }
@@ -88,16 +88,16 @@ app.directive("specPropertyTagSizer", function ($timeout) {
 /**
  * Allow stepping through video with arrow keys
  */
-app.directive("scrubbable", function () {
+app.directive('scrubbable', function () {
   return {
-    restrict: "A",
+    restrict: 'A',
     link: function (scope, element, attrs) {
       var video = element[0];
 
       /* timeline video scrubbing */
       var gridContainment = $(element[0])
-        .parents(".spec-content")
-        .find(".spec-grid-containment");
+        .parents('.spec-content')
+        .find('.spec-grid-containment');
 
       // convert between timestamp in seconds to pixels from left edge of spec
       var secondsToX = function (videoSeconds) {
@@ -131,16 +131,16 @@ app.directive("scrubbable", function () {
         // @ts-ignore
         .throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
 
-      video.addEventListener("seeking", function () {
+      video.addEventListener('seeking', function () {
         window.requestAnimationFrame(onTimeUpdate);
       });
 
-      video.addEventListener("play", function () {
+      video.addEventListener('play', function () {
         window.requestAnimationFrame(onTimeUpdate);
       });
 
       var constrainScrubberX = function (x) {
-        var gridWidth = $(gridContainment).find(".spec-grid").width();
+        var gridWidth = $(gridContainment).find('.spec-grid').width();
         var durationX = secondsToX(video.duration);
         // @ts-ignore
         var maxAllowedX = Math.min(durationX, gridWidth);
@@ -149,13 +149,13 @@ app.directive("scrubbable", function () {
         return x;
       };
 
-      var scrubber = $(gridContainment).find(".spec-grid-scrubber");
+      var scrubber = $(gridContainment).find('.spec-grid-scrubber');
       var moveScrubber = function (x) {
         if (!scrubber.length) {
-          scrubber = $(gridContainment).find(".spec-grid-scrubber");
+          scrubber = $(gridContainment).find('.spec-grid-scrubber');
         }
         scope.refreshCanvas();
-        scrubber.css("left", constrainScrubberX(x));
+        scrubber.css('left', constrainScrubberX(x));
       };
 
       var scrubVideoX = function (x) {
@@ -173,11 +173,11 @@ app.directive("scrubbable", function () {
         .throttle(); // rate limit this event to one / 100ms (to prevent ui lag)
 
       // listen to mouse events on the scrub handle
-      $(gridContainment).one("mouseover", ".spec-grid-scrubber", function () {
+      $(gridContainment).one('mouseover', '.spec-grid-scrubber', function () {
         var scrubber = $(this);
         // @ts-ignore
         scrubber.draggable({
-          axis: "x",
+          axis: 'x',
           cursorAt: { left: 0 },
           drag: function (evt, ui) {
             ui.position.left = constrainScrubberX(ui.position.left);
@@ -196,20 +196,20 @@ app.directive("scrubbable", function () {
         }
       };
 
-      scope.$watch("spec.duration", checkDurationMatch);
-      video.addEventListener("durationchange", checkDurationMatch);
+      scope.$watch('spec.duration', checkDurationMatch);
+      video.addEventListener('durationchange', checkDurationMatch);
     },
   };
 });
 
-app.directive("loadedData", function () {
+app.directive('loadedData', function () {
   return function ($scope, $element) {
     var parentScope = $scope.$parent;
     parentScope.video = $element[0];
 
-    parentScope.video.addEventListener("loadeddata", function () {
-      console.log("Video loaded");
-      $scope.$parent.$broadcast("refreshCanvas");
+    parentScope.video.addEventListener('loadeddata', function () {
+      console.log('Video loaded');
+      $scope.$parent.$broadcast('refreshCanvas');
 
       // attach functions to video play controls
       parentScope.toggleVideoLooping = function () {

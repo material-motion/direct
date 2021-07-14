@@ -1,20 +1,20 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
-app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
+app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
   // Initial Config
   $scope.uiState = {
     overlay: false,
@@ -39,7 +39,7 @@ app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
     $scope.embedded = true;
   }
 
-  $scope.embedUrl = $location.absUrl().split("?")[0] + "?embed";
+  $scope.embedUrl = $location.absUrl().split('?')[0] + '?embed';
 
   // UI state
   $scope.showSidebar = function () {
@@ -65,14 +65,14 @@ app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
 
   // Manually redraw grid and grid items
   $scope.refreshCanvas = function () {
-    $scope.$broadcast("refreshCanvas");
+    $scope.$broadcast('refreshCanvas');
   }
     // @ts-ignore
     .debounce(100);
 
   // reload project list in menu (see sidebarCtrl.js)
   $scope.refreshSidebar = function () {
-    $scope.$broadcast("refreshSidebar");
+    $scope.$broadcast('refreshSidebar');
   }
     // @ts-ignore
     .debounce(100);
@@ -85,9 +85,9 @@ app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
         if (deletedIdx > -1) {
           $scope.multispec.splice(deletedIdx, 1);
         }
-        $scope.goto("/spec/" + $scope.multispec.join("+"));
+        $scope.goto('/spec/' + $scope.multispec.join('+'));
       } else {
-        $scope.goto("/user/" + $scope.user);
+        $scope.goto('/user/' + $scope.user);
       }
     });
   };
@@ -96,78 +96,78 @@ app.controller("specCtrl", function ($scope, $routeParams, $sce, $location) {
 
   // Colors
   $scope.colors = [
-    "#E51C23",
-    "#9C27B0",
-    "#5677FC",
-    "#00BCD4",
-    "#259B24",
-    "#CDDC39",
-    "#FFC107",
-    "#795548",
-    "#737373",
+    '#E51C23',
+    '#9C27B0',
+    '#5677FC',
+    '#00BCD4',
+    '#259B24',
+    '#CDDC39',
+    '#FFC107',
+    '#795548',
+    '#737373',
   ];
 
   // Easing
   $scope.easingOptions = [
     {
-      label: "80% Incoming, 40% Outgoing",
-      value: "quantum",
+      label: '80% Incoming, 40% Outgoing',
+      value: 'quantum',
     },
     {
-      label: "80% Incoming Only",
-      value: "incoming",
+      label: '80% Incoming Only',
+      value: 'incoming',
     },
     {
-      label: "40% Outgoing Only",
-      value: "outgoing",
+      label: '40% Outgoing Only',
+      value: 'outgoing',
     },
     {
-      label: "Linear",
-      value: "linear",
+      label: 'Linear',
+      value: 'linear',
     },
     {
-      label: "Custom Curve",
-      value: "custom",
+      label: 'Custom Curve',
+      value: 'custom',
     },
   ];
 
   // Property Tags
   $scope.tagOptions = [
     {
-      label: "Position-x",
-      value: "position-x",
+      label: 'Position-x',
+      value: 'position-x',
     },
     {
-      label: "Position-y",
-      value: "position-y",
+      label: 'Position-y',
+      value: 'position-y',
     },
     {
-      label: "Position-xy",
-      value: "position-xy",
+      label: 'Position-xy',
+      value: 'position-xy',
     },
     {
-      label: "Scale",
-      value: "scale",
+      label: 'Scale',
+      value: 'scale',
     },
     {
-      label: "Opacity",
-      value: "opacity",
+      label: 'Opacity',
+      value: 'opacity',
     },
     {
-      label: "Rotation",
-      value: "rotation",
+      label: 'Rotation',
+      value: 'rotation',
     },
     {
-      label: "Mask",
-      value: "mask",
+      label: 'Mask',
+      value: 'mask',
     },
     {
-      label: "Custom",
-      value: "custom",
+      label: 'Custom',
+      value: 'custom',
     },
     {
-      label: "None",
-      value: "none",
+      label: 'None',
+      value: 'none',
     },
   ];
 });

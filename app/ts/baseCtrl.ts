@@ -1,25 +1,25 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
 app.controller(
-  "baseCtrl",
+  'baseCtrl',
   function ($scope, $http, $window, $location, $mdDialog, Spec) {
     $http({
-      method: "GET",
-      url: "/user",
+      method: 'GET',
+      url: '/user',
     })
       .success(function (data, status, headers, config) {
         // this callback will be called asynchronously
@@ -29,10 +29,10 @@ app.controller(
       .error(function (data, status, headers, config) {
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        console.warn("> User Request Error");
+        console.warn('> User Request Error');
         console.log(data);
 
-        $window.location.href = "/login";
+        $window.location.href = '/login';
       });
 
     // Helpers
@@ -54,9 +54,9 @@ app.controller(
         var newSpec = {
           group: data.group,
           groupHandle: data.groupHandle,
-          title: "Copy of " + data.title,
+          title: 'Copy of ' + data.title,
           permissions: {
-            privacy: "public",
+            privacy: 'public',
             owner: $scope.user,
             editors: [],
             viewers: [],
@@ -67,7 +67,7 @@ app.controller(
         // Save as new
         Spec.save(newSpec, function (resp) {
           // Redirect to correct URL
-          $location.path("/spec/" + resp.id);
+          $location.path('/spec/' + resp.id);
         });
       });
     };
@@ -80,10 +80,10 @@ app.controller(
       // Confirmation
       var confirm = $mdDialog
         .confirm()
-        .title("Delete Project")
-        .content("Are you sure you want to delete this project?")
-        .ok("Yes, delete it")
-        .cancel("No, nevermind")
+        .title('Delete Project')
+        .content('Are you sure you want to delete this project?')
+        .ok('Yes, delete it')
+        .cancel('No, nevermind')
         .targetEvent(ev);
 
       $mdDialog.show(confirm).then(

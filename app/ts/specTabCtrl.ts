@@ -1,21 +1,21 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
 app.controller(
-  "specTabCtrl",
+  'specTabCtrl',
   function ($scope, $location, $filter, $sce, Spec, storageService) {
     // Initial Config
     $scope.canEdit = false;
@@ -37,24 +37,24 @@ app.controller(
 
       if (src && src.search(ID_REGEX) != -1) {
         var videoId = src.match(ID_REGEX);
-        console.log("> Video is a Drive ID or Drive URL");
+        console.log('> Video is a Drive ID or Drive URL');
         // Is a drive ID
         return $sce.trustAsResourceUrl(
-          "https://docs.google.com/uc?authuser=0&id=" +
+          'https://docs.google.com/uc?authuser=0&id=' +
             videoId +
-            "&export=download"
+            '&export=download'
         );
       } else if (src && src.search(URL_REGEX) != -1) {
-        console.log("> Video is a full URL");
+        console.log('> Video is a full URL');
         // Is a full URL
         return $sce.trustAsResourceUrl(src);
       } else {
         // Something went wrong
-        console.log("Something went wrong trying to load the video");
+        console.log('Something went wrong trying to load the video');
       }
     };
 
-    $scope.$watch("spec.videoUrl", function () {
+    $scope.$watch('spec.videoUrl', function () {
       if ($scope.spec) {
         $scope.spec.videoSrc = $scope.getVideoSrc($scope.spec.videoUrl);
       }
@@ -83,11 +83,11 @@ app.controller(
 
     $scope.$watchGroup(
       [
-        "spec.exactTiming",
-        "spec.fps",
-        "spec.frames",
-        "spec.divisions.minorFrames",
-        "spec.divisions.majorFrames",
+        'spec.exactTiming',
+        'spec.fps',
+        'spec.frames',
+        'spec.divisions.minorFrames',
+        'spec.divisions.majorFrames',
       ],
       function () {
         recalculate();
@@ -116,32 +116,32 @@ app.controller(
           var row = $scope.spec.rows[i];
           // Set easing.
           var easing = matchOption($scope.easingOptions, row.easing, {
-            label: "Linear",
-            value: "linear",
+            label: 'Linear',
+            value: 'linear',
           });
           row.easing = easing;
           // Set tag.
           var tag = matchOption($scope.tagOptions, row.tag, {
-            label: "None",
-            value: "none",
+            label: 'None',
+            value: 'none',
           });
           row.tag = tag;
         }
       });
       // Check if should be editing.
-      if ($location.search().create == "true") {
+      if ($location.search().create == 'true') {
         $scope.editing = true;
         $scope.configuring = true;
         $scope.overlay = true;
       }
-      $location.search("");
+      $location.search('');
     } else {
       $scope.data = {
         group: null,
         groupHandle: null,
         title: null,
         permissions: {
-          privacy: "public",
+          privacy: 'public',
           owner: $scope.user,
           editors: [],
           viewers: [],
@@ -177,16 +177,16 @@ app.controller(
     }
 
     // Watch group name to make sure a handle is generated
-    $scope.$watch("data.group", function () {
+    $scope.$watch('data.group', function () {
       if ($scope.data && $scope.data.group) {
-        var handle = $scope.data.group.replace(/\s+/g, "-");
+        var handle = $scope.data.group.replace(/\s+/g, '-');
         $scope.data.groupHandle = handle.toLowerCase();
-        console.log("> New Group Handle: " + $scope.data.groupHandle);
+        console.log('> New Group Handle: ' + $scope.data.groupHandle);
       }
     });
 
     // keep sidebar up to date
-    $scope.$watchGroup(["data.group", "data.title"], function () {
+    $scope.$watchGroup(['data.group', 'data.title'], function () {
       $scope.refreshSidebar();
     });
 
@@ -209,7 +209,7 @@ app.controller(
         $scope.addingRow = null;
       }
       $scope.refreshCanvas();
-      $location.search("");
+      $location.search('');
     };
 
     $scope.toggleConfig = function () {
@@ -225,7 +225,7 @@ app.controller(
     };
 
     $scope.toggleVideoWarning = function (show) {
-      if (typeof show === "undefined") {
+      if (typeof show === 'undefined') {
         $scope.showingVideoWarning = !$scope.showingVideoWarning;
       } else {
         $scope.showingVideoWarning = show;
@@ -287,7 +287,7 @@ app.controller(
           let label = num.toString();
 
           if (i === 0) {
-            label = "Frames";
+            label = 'Frames';
           }
 
           $scope.labels.frames.push(label);
@@ -301,9 +301,9 @@ app.controller(
           let label: string = num.toString();
 
           if (i === 0) {
-            label = "Ms";
+            label = 'Ms';
           } else {
-            label = $filter("number")(label, $scope.decimalPlaces);
+            label = $filter('number')(label, $scope.decimalPlaces);
           }
 
           $scope.labels.ms.push(label);
@@ -312,7 +312,7 @@ app.controller(
     };
 
     // Watch for grid computations
-    $scope.$watch("spec.divisions.majorCount", function () {
+    $scope.$watch('spec.divisions.majorCount', function () {
       $scope.createLabels();
     });
 
@@ -355,7 +355,7 @@ app.controller(
 
     // Refresh on duration / division change
     $scope.$watchGroup(
-      ["spec.duration", "spec.divisions"],
+      ['spec.duration', 'spec.divisions'],
       function (newValues, oldValues, scope) {
         $scope.refreshCanvas();
       }

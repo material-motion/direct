@@ -1,20 +1,20 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
-app.service("projectListService", function () {
+app.service('projectListService', function () {
   // multispec selection
   // @ts-ignore
   this.toggleSelected = function ($scope, item) {
@@ -35,7 +35,7 @@ app.service("projectListService", function () {
       .map(function (spec) {
         return spec.id;
       })
-      .join("+");
+      .join('+');
   };
 
   // project list construction
@@ -44,7 +44,7 @@ app.service("projectListService", function () {
     var i = $scope.projectGroups.length;
     var projectAdded = false;
 
-    spec.group = spec.group || "";
+    spec.group = spec.group || '';
 
     // Loop through all groups
     while (i--) {

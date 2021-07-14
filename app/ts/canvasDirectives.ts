@@ -1,25 +1,25 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
 declare const angular;
 
 /**
  * Spec Canvas Visuals to render bezier curves and other elements
  */
-app.directive("specCanvas", function ($timeout) {
+app.directive('specCanvas', function ($timeout) {
   // Bezier Curve Drawing
 
   // Basic Curves:
@@ -29,13 +29,13 @@ app.directive("specCanvas", function ($timeout) {
 
   // Turns hex to RGB then adds an alpha channel while outputting to CSS format
   var lighten = function (hex) {
-    hex = hex.replace(/[^0-9A-F]/gi, "");
+    hex = hex.replace(/[^0-9A-F]/gi, '');
     var bigint = parseInt(hex, 16);
     var r = (bigint >> 16) & 255;
     var g = (bigint >> 8) & 255;
     var b = bigint & 255;
 
-    return "rgba(" + r + "," + g + "," + b + ",0.15)";
+    return 'rgba(' + r + ',' + g + ',' + b + ',0.15)';
   };
 
   // Draws the base bar and begin and end circles
@@ -91,7 +91,7 @@ app.directive("specCanvas", function ($timeout) {
       +spec.delay < 0 ||
       +spec.duration > +totalDuration
     ) {
-      console.warn("Duration or Delay are invalid!");
+      console.warn('Duration or Delay are invalid!');
       return;
     }
 
@@ -99,16 +99,16 @@ app.directive("specCanvas", function ($timeout) {
     var delay = (spec.delay / totalDuration) * 100;
 
     wrap.css({
-      width: duration + "%",
-      marginLeft: delay + "%",
+      width: duration + '%',
+      marginLeft: delay + '%',
     });
 
     var wrapWidth = wrap.width();
 
     canvas.css({
       width: wrapWidth + 10,
-      marginLeft: "-5px",
-      marginRight: "-5px",
+      marginLeft: '-5px',
+      marginRight: '-5px',
     });
 
     // Set Canvas Width / Height
@@ -120,7 +120,7 @@ app.directive("specCanvas", function ($timeout) {
     });
 
     // Setup & Reset
-    var ctx = canvas.get(0).getContext("2d");
+    var ctx = canvas.get(0).getContext('2d');
     ctx.clearRect(0, 0, cw, ch);
 
     // check duration
@@ -135,13 +135,13 @@ app.directive("specCanvas", function ($timeout) {
     // http://jsfiddle.net/andershaig/54AsL/
     ctx.fillStyle = lightColor;
     switch (curve) {
-      case "curve":
+      case 'curve':
         ctx.beginPath();
         ctx.moveTo(5, ch - 5);
         ctx.bezierCurveTo(5, ch - 5, cw / 2, (ch - 5) * -1, cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "quantum":
+      case 'quantum':
         inValue = 0.8;
         outValue = 0.4;
         ctx.beginPath();
@@ -157,7 +157,7 @@ app.directive("specCanvas", function ($timeout) {
         ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "incoming":
+      case 'incoming':
         inValue = 0.8;
         outValue = 0;
         ctx.beginPath();
@@ -173,7 +173,7 @@ app.directive("specCanvas", function ($timeout) {
         ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "outgoing":
+      case 'outgoing':
         inValue = 0;
         outValue = 0.4;
         ctx.beginPath();
@@ -189,14 +189,14 @@ app.directive("specCanvas", function ($timeout) {
         ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "linear":
+      case 'linear':
         ctx.beginPath();
         ctx.moveTo(5, ch - 5);
         ctx.lineTo(cw - 5, 0);
         ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "custom":
+      case 'custom':
         inValue = spec.easingCustomIncoming / 100;
         outValue = spec.easingCustomOutgoing / 100;
         ctx.beginPath();
@@ -212,7 +212,7 @@ app.directive("specCanvas", function ($timeout) {
         ctx.lineTo(cw - 5, ch - 5);
         ctx.fill();
         break;
-      case "none":
+      case 'none':
         ctx.fillRect(5, 0, cw - 10, ch - 5);
         break;
       default:
@@ -225,18 +225,18 @@ app.directive("specCanvas", function ($timeout) {
   };
 
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
-      specCanvas: "=",
-      duration: "=",
+      specCanvas: '=',
+      duration: '=',
     },
     link: function (scope, element, attrs) {
       var wrap = angular.element(element[0]);
-      var canvas = angular.element(element.find("canvas")[0]);
+      var canvas = angular.element(element.find('canvas')[0]);
 
       // Watch Changes
       scope.$watch(
-        "specCanvas",
+        'specCanvas',
         function (newValue, oldValue) {
           render(wrap, canvas, scope.specCanvas, scope.duration);
         },
@@ -249,7 +249,7 @@ app.directive("specCanvas", function ($timeout) {
       });
 
       // Watch for controller to request redraw
-      scope.$on("refreshCanvas", function () {
+      scope.$on('refreshCanvas', function () {
         $timeout(function () {
           render(wrap, canvas, scope.specCanvas, scope.duration);
         }, 0);
@@ -261,7 +261,7 @@ app.directive("specCanvas", function ($timeout) {
 /**
  * Grid Background
  */
-app.directive("specGrid", function ($timeout) {
+app.directive('specGrid', function ($timeout) {
   var render = function (canvas, spec) {
     var ms = spec.duration || 300;
     var minorMs = spec.divisions.minor || 15;
@@ -278,7 +278,7 @@ app.directive("specGrid", function ($timeout) {
     spec.canvas.width = cw;
 
     // Setup & Reset
-    var ctx = canvas.get(0).getContext("2d");
+    var ctx = canvas.get(0).getContext('2d');
     ctx.clearRect(0, 0, cw, ch);
 
     // Generate Grid
@@ -300,7 +300,7 @@ app.directive("specGrid", function ($timeout) {
       ctx.lineTo(nx, ch);
     }
 
-    ctx.strokeStyle = "#EEEEEE";
+    ctx.strokeStyle = '#EEEEEE';
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -324,22 +324,22 @@ app.directive("specGrid", function ($timeout) {
     ctx.moveTo(cw - 1, 0);
     ctx.lineTo(cw - 1, ch);
 
-    ctx.strokeStyle = "#DDDDDD";
+    ctx.strokeStyle = '#DDDDDD';
     ctx.lineWidth = 2;
     ctx.stroke();
   };
 
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
-      specGrid: "=",
+      specGrid: '=',
     },
     link: function (scope, element, attrs) {
       var canvas = angular.element(element[0]);
 
       // Watch Changes
       scope.$watch(
-        "specGrid",
+        'specGrid',
         function (newValue, oldValue) {
           if (scope.specGrid && scope.specGrid !== undefined) {
             render(canvas, scope.specGrid);
@@ -356,7 +356,7 @@ app.directive("specGrid", function ($timeout) {
       });
 
       // Watch for controller to request redraw
-      scope.$on("refreshCanvas", function (type) {
+      scope.$on('refreshCanvas', function (type) {
         $timeout(function () {
           if (scope.specGrid && scope.specGrid !== undefined) {
             render(canvas, scope.specGrid);
@@ -371,7 +371,7 @@ app.directive("specGrid", function ($timeout) {
  * Drawable Canvas to add new items
  * (goes away once drawn and renders using specCanvas' render method)
  */
-app.directive("specDraw", function ($timeout, $document) {
+app.directive('specDraw', function ($timeout, $document) {
   var render = function (canvas, spec) {
     var ms = spec.duration || 300;
     var minorMs = spec.divisions.minor || 15;
@@ -386,11 +386,11 @@ app.directive("specDraw", function ($timeout, $document) {
     });
 
     // Setup & Reset
-    var ctx = canvas.get(0).getContext("2d");
+    var ctx = canvas.get(0).getContext('2d');
     ctx.clearRect(0, 0, cw, ch);
 
     // Add Background
-    ctx.fillStyle = "#F8EFF9";
+    ctx.fillStyle = '#F8EFF9';
     ctx.fillRect(0, 0, cw, ch);
 
     // Generate Grid
@@ -412,7 +412,7 @@ app.directive("specDraw", function ($timeout, $document) {
       ctx.lineTo(nx, ch);
     }
 
-    ctx.strokeStyle = "#E9E0EB";
+    ctx.strokeStyle = '#E9E0EB';
     ctx.lineWidth = 1;
     ctx.stroke();
 
@@ -438,13 +438,13 @@ app.directive("specDraw", function ($timeout, $document) {
       ctx.lineTo(cw - 1, ch);
     }
 
-    ctx.strokeStyle = "#E9E0EB";
+    ctx.strokeStyle = '#E9E0EB';
     ctx.lineWidth = 2;
     ctx.stroke();
   };
 
   var renderCircle = function (canvas, x) {
-    var ctx = canvas.get(0).getContext("2d");
+    var ctx = canvas.get(0).getContext('2d');
 
     ctx.beginPath();
     var y = 30; // y coordinate
@@ -453,27 +453,27 @@ app.directive("specDraw", function ($timeout, $document) {
     var endAngle = Math.PI * 2; // End point on circle
 
     ctx.arc(x, y, radius, startAngle, endAngle);
-    ctx.fillStyle = "#CE93D8";
+    ctx.fillStyle = '#CE93D8';
     ctx.fill();
   };
 
   var renderLine = function (canvas, from, to) {
-    var ctx = canvas.get(0).getContext("2d");
+    var ctx = canvas.get(0).getContext('2d');
 
     ctx.beginPath();
     ctx.moveTo(from, 30);
     ctx.lineTo(to, 30);
-    ctx.strokeStyle = "#CE93D8";
+    ctx.strokeStyle = '#CE93D8';
     ctx.lineWidth = 2;
     ctx.stroke();
   };
 
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
-      specDraw: "=",
-      completeFn: "&",
-      position: "=",
+      specDraw: '=',
+      completeFn: '&',
+      position: '=',
     },
     link: function (scope, element, attrs) {
       var addSpecRow = function (delay, duration) {
@@ -482,17 +482,17 @@ app.directive("specDraw", function ($timeout, $document) {
           delayFrames: Math.round(delay / (1000 / scope.specDraw.fps)),
           duration: duration, // ms
           durationFrames: Math.round(duration / (1000 / scope.specDraw.fps)),
-          color: "#737373",
+          color: '#737373',
           properties: null,
           easing: {
-            label: "80% Incoming, 40% Outgoing",
-            value: "quantum",
+            label: '80% Incoming, 40% Outgoing',
+            value: 'quantum',
           },
           easingCustomIncoming: 0,
           easingCustomOutgoing: 0,
           tag: {
-            label: "None",
-            value: "none",
+            label: 'None',
+            value: 'none',
           },
           customTag: null,
           comment: null,
@@ -535,12 +535,12 @@ app.directive("specDraw", function ($timeout, $document) {
         return top;
       };
 
-      element.on("mouseover", function (event) {
+      element.on('mouseover', function (event) {
         event.preventDefault();
 
-        $document.on("mousemove", mousemove);
-        $document.on("mousedown", mousedown);
-        $document.on("mouseup", mouseup);
+        $document.on('mousemove', mousemove);
+        $document.on('mousedown', mousedown);
+        $document.on('mouseup', mouseup);
       });
 
       var inBounds = function (event) {
@@ -649,13 +649,13 @@ app.directive("specDraw", function ($timeout, $document) {
         // Clear canvas except for grid
         render(canvas, scope.specDraw);
 
-        $document.off("mousemove", mousemove);
-        $document.off("mousedown", mousedown);
+        $document.off('mousemove', mousemove);
+        $document.off('mousedown', mousedown);
       };
 
       // Watch Changes
       scope.$watch(
-        "specDraw",
+        'specDraw',
         function (newValue, oldValue) {
           if (scope.specDraw && scope.specDraw !== undefined) {
             render(canvas, scope.specDraw);
@@ -672,7 +672,7 @@ app.directive("specDraw", function ($timeout, $document) {
       });
 
       // Watch for controller to request redraw
-      scope.$on("refreshCanvas", function (type) {
+      scope.$on('refreshCanvas', function (type) {
         $timeout(function () {
           if (scope.specDraw && scope.specDraw !== undefined) {
             render(canvas, scope.specDraw);
@@ -686,11 +686,11 @@ app.directive("specDraw", function ($timeout, $document) {
 /**
  * Popup & Popup Tip Position
  */
-app.directive("specTip", function () {
+app.directive('specTip', function () {
   var render = function (tip, spec, totalDuration) {
     var duration = spec.duration / totalDuration;
     var delay = spec.delay / totalDuration;
-    var containerWidth = $(".spec-item-wrap").width();
+    var containerWidth = $('.spec-item-wrap').width();
     var offset = delay + duration / 2;
     if (containerWidth) {
       var pixelOffset = offset * containerWidth;
@@ -704,17 +704,17 @@ app.directive("specTip", function () {
   };
 
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
-      specTip: "=",
-      duration: "=",
+      specTip: '=',
+      duration: '=',
     },
     link: function (scope, element, attrs) {
       var tip = angular.element(element[0]);
 
       // Watch Changes
       scope.$watch(
-        "specTip",
+        'specTip',
         function (newValue, oldValue) {
           render(tip, scope.specTip, scope.duration);
         },
@@ -732,12 +732,12 @@ app.directive("specTip", function () {
 /**
  * Spec Item Resizing
  */
-app.directive("resizer", function ($document) {
+app.directive('resizer', function ($document) {
   return {
-    restrict: "A",
+    restrict: 'A',
     scope: {
-      resizerItem: "=",
-      resizerSpec: "=",
+      resizerItem: '=',
+      resizerSpec: '=',
     },
     link: function (scope, element, attrs) {
       var initial: {
@@ -750,12 +750,12 @@ app.directive("resizer", function ($document) {
         duration: null,
       };
 
-      element.on("mousedown", function (event) {
+      element.on('mousedown', function (event) {
         event.preventDefault();
 
-        $document.on("mousemove", mousemove);
-        $document.on("mouseup", mouseup);
-        $document.on("contextmenu", mouseup); // cancel on right clicks
+        $document.on('mousemove', mousemove);
+        $document.on('mouseup', mouseup);
+        $document.on('contextmenu', mouseup); // cancel on right clicks
       });
 
       var mousemove = function (event) {
@@ -784,7 +784,7 @@ app.directive("resizer", function ($document) {
         if (initial.x) {
           var dx = x - initial.x;
 
-          if (attrs.resizer == "left") {
+          if (attrs.resizer == 'left') {
             // Handle left resizer
 
             // Snap to minor divisions
@@ -828,7 +828,7 @@ app.directive("resizer", function ($document) {
                 );
               });
             }
-          } else if (attrs.resizer == "right") {
+          } else if (attrs.resizer == 'right') {
             // Handle right resizer
 
             // Snap to minor divisions
@@ -872,9 +872,9 @@ app.directive("resizer", function ($document) {
 
         scope.$parent.setResizingRow(null);
 
-        $document.unbind("mousemove", mousemove);
-        $document.unbind("mouseup", mouseup);
-        $document.unbind("contextmenu", mouseup);
+        $document.unbind('mousemove', mousemove);
+        $document.unbind('mouseup', mouseup);
+        $document.unbind('contextmenu', mouseup);
       };
     },
   };

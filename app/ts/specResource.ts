@@ -1,35 +1,35 @@
 // Copyright 2018 Google LLC
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
+// Licensed under the Apache License, Version 2.0 (the 'License');
 // you may not use this file except in compliance with the License.
 // You may obtain a copy of the License at
 //
 //      http://www.apache.org/licenses/LICENSE-2.0
 //
 // Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
+// distributed under the License is distributed on an 'AS IS' BASIS,
 // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from "./app.js";
+import { app } from './app.js';
 
-app.provider("Spec", function () {
+app.provider('Spec', function () {
   // @ts-ignore
   this.$get = [
-    "$resource",
-    "envService",
-    "localStorageService",
-    "$timeout",
+    '$resource',
+    'envService',
+    'localStorageService',
+    '$timeout',
     function ($resource, envService, localStorageService, $timeout) {
-      if (envService.is("production")) {
+      if (envService.is('production')) {
         // @ts-ignore
         var Spec = $resource(
-          "/api/spec/:id",
+          '/api/spec/:id',
           {},
           {
             update: {
-              method: "PUT",
+              method: 'PUT',
             },
           }
         );
@@ -38,7 +38,7 @@ app.provider("Spec", function () {
         // @ts-ignore
         var Spec = {
           query: function (params, callback) {
-            console.log("localstorage query");
+            console.log('localstorage query');
             $timeout(function () {
               // simulate async so the callback works
               var specs = [];
@@ -66,7 +66,7 @@ app.provider("Spec", function () {
             }, 0);
           },
           get: function (params, callback) {
-            console.log("localstorage get");
+            console.log('localstorage get');
             $timeout(function () {
               // simulate async so the callback works
               var data = localStorageService.get(params.id);
@@ -74,7 +74,7 @@ app.provider("Spec", function () {
             }, 0);
           },
           save: function (value, callback) {
-            console.log("localstorage save");
+            console.log('localstorage save');
             $timeout(function () {
               // simulate async so the callback works
               var id = Math.round(Math.random() * 100000000);
@@ -89,13 +89,13 @@ app.provider("Spec", function () {
           update: function (params, value, callback) {
             $timeout(function () {
               // simulate async so the callback works
-              console.log("localstorage update");
+              console.log('localstorage update');
               localStorageService.set(params.id, value);
               callback(value);
             }, 0);
           },
           delete: function (params, callback) {
-            console.log("localstorage delete");
+            console.log('localstorage delete');
             $timeout(function () {
               // simulate async so the callback works
               localStorageService.remove(params.id);
