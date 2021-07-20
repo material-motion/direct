@@ -6,9 +6,10 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "ts:watch": "tsc --watch",
     "ts": "tsc",
-    "start": "npm run ts; echo \"sudo starting Google AppEngine\"; sudo dev_appserver.py --port 8001 --admin_port=8002 ."
+    "ts:watch": "tsc --watch",
+    "server":"sudo dev_appserver.py --port 8001 --admin_port=8002 .",
+    "start": "npm run ts; echo \"sudo starting Google AppEngine\"; npm run server"
   },
   "dependencies": {
     "angular": "~1.4.5",
