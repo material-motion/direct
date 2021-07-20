@@ -17,7 +17,7 @@ Disclaimer: This is not an officially supported Google product.
 3. Install dependencies
 
 ``` shell
-npm install
+npm i
 ```
 
 4. Populate config files
@@ -27,14 +27,14 @@ npm install
     (this file can be left blank for most users)
 
 
-    Rename `app/js/config_sample.ts` to `app/js/config.ts`
+    Rename `app/ts/config_sample.ts` to `app/ts/config.ts`
 
     Fill in values for `window.__directConfig.stagingDomain` and `window.__directConfig.productionDomain` if you intend to use staging and production environments. Otherwise, they can be left as empty strings.
 
 
 5. Run a local instance
 ``` shell
-npm run serve
+npm run start
 ```
 
-6. View the server at http://localhost:8080/
+6. View the server at http://localhost:8001/

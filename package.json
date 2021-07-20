@@ -8,8 +8,7 @@
   "scripts": {
     "ts:watch": "tsc --watch",
     "ts": "tsc",
-    "start": "npm run ts ; sudo dev_appserver.py .",
-    "setup": "bower install"
+    "start": "npm run ts; echo \"sudo starting Google AppEngine\"; sudo dev_appserver.py --port 8001 --admin_port=8002 ."
   },
   "dependencies": {
     "angular": "~1.4.5",
