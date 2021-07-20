@@ -8,7 +8,7 @@
   "scripts": {
     "ts": "tsc",
     "ts:watch": "tsc --watch",
-    "server": "sudo dev_appserver.py --port 8001 --admin_port=8002 .",
+    "server": "sudo dev_appserver.py .",
     "start": "npm run ts; echo \"sudo starting Google AppEngine\"; npm run server"
   },
   "dependencies": {

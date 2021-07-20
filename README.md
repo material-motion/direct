@@ -37,4 +37,4 @@ npm i
 npm run start
 ```
 
-6. View the server at http://localhost:8001/
+6. View the server at http://localhost:8080/
