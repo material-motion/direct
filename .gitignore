@@ -1,8 +1,9 @@
 bower_components
+node_modules
 *.pyc
-
+.vscode
 .DS_Store
-
+app/js/*.js
 config.js
 config.yaml
 
