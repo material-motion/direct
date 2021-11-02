@@ -40,114 +40,129 @@
     </p>
 
     <script id="exampleText" type="text/template">
+  {
+    "group": null,
+    "title": "Test Spec",
+    "spec": {
+        "divisions": {
+            "majorFrames": 5,
+            "minorFrames": 1,
+            "major": 83.33333333333334,
+            "minor": 16.666666666666668
+        },
+        "canvas": {},
+        "rows": [
             {
-          "group": null,
-          "title": "Test Spec",
-          "spec": {
-              "divisions": {
-                  "majorFrames": 5,
-                  "minorFrames": 1,
-                  "major": 83.33333333333334,
-                  "minor": 16.666666666666668
-              },
-              "canvas": {},
-              "rows": [
-                  {
-                      "delay": 0,
-                      "duration": 75,
-                      "color": "#E51C23",
-                      "properties": "Opacity",
-                      "easing": {
-                          "label": "None (constant velocity)",
-                          "value": "none"
-                      },
-                      "comment": "Fade out app bar",
-                      "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo hic suscipit quasi eveniet corporis veritatis expedita eaque voluptatum qui nihil fugit similique odit nam aut non voluptatem totam alias! Cum magni totam fuga doloremque recusandae.",
-                      "active": false,
-                      "resizing": false
-                  },
-                  {
-                      "delay": 75,
-                      "duration": 225,
-                      "color": "#9C27B0",
-                      "properties": "Opacity",
-                      "easing": {
-                          "label": "Incoming (80% incoming)",
-                          "value": "incoming"
-                      },
-                      "comment": "Card fades in prior to flipping over",
-                      "active": false,
-                      "resizing": false
-                  },
-                  {
-                      "delay": 225,
-                      "duration": 150,
-                      "color": "#5677FC",
-                      "properties": "Rotation (Z Axis)",
-                      "easing": {
-                          "label": "Outgoing (40% outgoing)",
-                          "value": "outgoing"
-                      },
-                      "comment": "Flip card over in 3d space (horizontal)",
-                      "active": false,
-                      "resizing": false
-                  },
-                  {
-                      "delay": 300,
-                      "duration": 150,
-                      "color": "#00BCD4",
-                      "properties": "Width, Height, Opacity",
-                      "easing": {
-                          "label": "Quantum (40% outgoing, 80% incoming)",
-                          "value": "quantum"
-                      },
-                      "comment": "Bring in the detail view of the new item",
-                      "active": false,
-                      "resizing": false
-                  }
-              ],
-              "videoUrl": null,
-              "title": null,
-              "exactTiming": false,
-              "frames": 30,
-              "fps": 60,
-              "duration": 500.00000000000006
-          },
-          "groupHandle": null,
-          "id": "286810003",
-          "permissions": {
-              "owner": "test",
-              "editors": [],
-              "viewers": [],
-              "privacy": "public"
-          }
-      }
+                "delay": 0,
+                "duration": 75,
+                "color": "#E51C23",
+                "properties": "Opacity",
+                "easing": {
+                    "label": "None (constant velocity)",
+                    "value": "none"
+                },
+                "comment": "Fade out app bar",
+                "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo hic suscipit quasi eveniet corporis veritatis expedita eaque voluptatum qui nihil fugit similique odit nam aut non voluptatem totam alias! Cum magni totam fuga doloremque recusandae.",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 75,
+                "duration": 225,
+                "color": "#9C27B0",
+                "properties": "Opacity",
+                "easing": {
+                    "label": "Incoming (80% incoming)",
+                    "value": "incoming"
+                },
+                "comment": "Card fades in prior to flipping over",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 225,
+                "duration": 150,
+                "color": "#5677FC",
+                "properties": "Rotation (Z Axis)",
+                "easing": {
+                    "label": "Outgoing (40% outgoing)",
+                    "value": "outgoing"
+                },
+                "comment": "Flip card over in 3d space (horizontal)",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 300,
+                "duration": 150,
+                "color": "#00BCD4",
+                "properties": "Width, Height, Opacity",
+                "easing": {
+                    "label": "Quantum (40% outgoing, 80% incoming)",
+                    "value": "quantum"
+                },
+                "comment": "Bring in the detail view of the new item",
+                "active": false,
+                "resizing": false
+            }
+        ],
+        "videoUrl": null,
+        "title": null,
+        "exactTiming": false,
+        "frames": 30,
+        "fps": 60,
+        "duration": 500.00000000000006
+    },
+    "groupHandle": null,
+    "id": "286810003",
+    "permissions": {
+        "owner": "test",
+        "editors": [],
+        "viewers": [],
+        "privacy": "public"
+    }
+}
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script>
-      $(document).ready(function () {
-        $('#url').val(window.location.origin + '/api/spec');
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlInput = document.getElementById('url');
+        urlInput.value = window.location.origin + '/api/spec';
       });
 
-      $('#example').click(function (e) {
-        $('#requestBody').val($('#exampleText').html());
+      const example = document.getElementById('example');
+      example.addEventListener('click', () => {
+        const requestBody = document.getElementById('requestBody');
+        const exampleText = document.getElementById('exampleText');
+        requestBody.value = exampleText.innerHTML;
       });
 
-      $('#go').click(function (e) {
-        $.ajax({
-          type: $('#method').val(),
-          url: $('#url').val(),
-          data: $('#requestBody').val(),
+      const go = document.getElementById('go');
+      go.addEventListener('click', () => {
+        const url = document.getElementById('url');
+        const method = document.getElementById('method');
+        const requestBody = document.getElementById('requestBody');
+        const response = document.getElementById('response');
+        const responseCode = document.getElementById('responseCode');
+
+        fetch(url.value, {
+          method: method.value,
+          body: method.value === 'GET' ? undefined :  requestBody.value,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
-          .success(function (result) {
-            $('#responseCode').css('color', 'black');
-            $('#responseCode').html(200);
-            $('#response').val(result);
+          .then(response => {
+            responseCode.innerHTML = response.status;
+            if (response.status === 200) {
+              responseCode.style.color = 'black';
+            } else {
+              responseCode.style.color = 'red';
+            }
+            return response.text();
           })
-          .error(function (e) {
-            $('#responseCode').css('color', 'red');
-            $('#responseCode').html(e.status);
-            $('#response').val(e.responseText);
+          .then(text => {
+            response.innerHTML = text;
           });
       });
     </script>
