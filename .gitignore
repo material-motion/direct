@@ -7,3 +7,4 @@ app/js/*.js
 config.js
 config.yaml
 
+app/ts/config.ts
