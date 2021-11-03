@@ -171,4 +171,3 @@ app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
     },
   ];
 });
-
