@@ -79,7 +79,7 @@ app.controller('specCtrl', function ($scope, $routeParams, $sce, $location) {
 
   // Helpers
   $scope.deleteProject = function (ev, data) {
-    $scope.$parent.deleteProject(ev, data, () => {
+    $scope.$parent.deleteProject(ev, data, function () {
       if ($scope.multispec.length > 1) {
         var deletedIdx = $scope.multispec.indexOf(data.id.toString());
         if (deletedIdx > -1) {
