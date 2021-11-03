@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 app.controller(
   'specTabCtrl',
@@ -99,7 +99,7 @@ app.controller(
 
     // Initial Data Setup
     if ($scope.specId) {
-      Spec.get({ id: $scope.specId }, function (data) {
+      Spec.get({id: $scope.specId}, function (data) {
         // TODO: Handle failure
 
         console.log(data);
@@ -210,6 +210,41 @@ app.controller(
       }
       $scope.refreshCanvas();
       $location.search('');
+    };
+
+    $scope.importJson = function () {
+      // Import Json
+      console.log('importing json');
+      // Import JSON file
+      const input = document.createElement('input');
+      input.type = 'file';
+      input.accept = '.json';
+      input.onchange = function (e) {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const json = JSON.parse(e.target.result);
+          $scope.data = json;
+          $scope.spec = $scope.data.spec;
+          $scope.refreshCanvas();
+        };
+        reader.readAsText(file);
+      };
+      input.click();
+      input.remove();
+    };
+
+    $scope.exportJson = function () {
+      console.log('exporting json');
+      // Export Json
+      const spec = $scope.spec;
+      const json = JSON.stringify(spec, null, 2);
+      const blob = new Blob([json], {type: 'application/json'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.download = 'spec.json';
+      a.href = url;
+      a.click();
     };
 
     $scope.toggleConfig = function () {
