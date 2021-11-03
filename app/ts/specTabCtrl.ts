@@ -214,8 +214,6 @@ app.controller(
 
     $scope.importJson = function () {
       // Import Json
-      console.log('importing json');
-      // Import JSON file
       const input = document.createElement('input');
       input.type = 'file';
       input.accept = '.json';
@@ -239,7 +237,6 @@ app.controller(
     };
 
     $scope.exportJson = function () {
-      console.log('exporting json');
       // Export Json
       const spec = $scope.spec;
       const json = JSON.stringify(spec, null, 2);
