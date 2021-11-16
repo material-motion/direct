@@ -1,156 +1,170 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Server Demo</title>
-        <style TYPE="text/css">
-          body {
-            font: 18px arial;
-          }
-          #url {
-            width: 600px;
-          }
-          textarea {
-            height: 200px;
-            width: 600px;
-          }
-        </style>
-    </head>
-    <body>
-      <input type="text" id="url">
-      <select name="method" id="method">
-        <option value="GET">GET</option>
-        <option value="POST">POST</option>
-        <option value="PUT">PUT</option>
-        <option value="DELETE">DELETE</option>
-      </select>
-      <input type="button" value="Go" id="go">
-
-      <p>
-        Request Body
-        <input type="button" id="example" value="Example">
-      </p>
-      <p>
-        <textarea id="requestBody"></textarea>
-      </p>
-
-
-      <p>
-        Response <span id="responseCode"></span>
-      </p>
-      <p>
-        <textarea id="response"></textarea>
-      </p>
-
-
-    <script id="exampleText" type="text/template">{
-  "title": "Sample Spec A",
-  "group": "BigTop",
-  "permissions": {
-    "privacy": "public",
-    "owner": "andershaig",
-    "editors": ["schlem", "rlo"],
-    "viewers": ["cornwell"]
-  },
-  "spec": {
-    "title": "Open Event",
-    "duration": 450,
-    "fps": 60,
-    "canvas": {
-      "width": 0
-    },
-    "divisions": {
-      "minor": 15,
-      "major": 75,
-      "minorCount": null,
-      "majorCount": null,
-      "minorGap": null,
-      "majorGap": null
-    },
-    "rows": [
-      {
-        "delay": 0,
-        "duration": 75,
-        "color": "#E51C23",
-        "properties": "Opacity",
-        "easing": {
-          "label": "None (constant velocity)",
-          "value": "none"
-        },
-        "comment": "Fade out app bar",
-        "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo hic suscipit quasi eveniet corporis veritatis expedita eaque voluptatum qui nihil fugit similique odit nam aut non voluptatem totam alias! Cum magni totam fuga doloremque recusandae.",
-        "active": false,
-        "resizing": false
-      },
-      {
-        "delay": 75,
-        "duration": 225,
-        "color": "#9C27B0",
-        "properties": "Opacity",
-        "easing": {
-          "label": "Incoming (80% incoming)",
-          "value": "incoming"
-        },
-        "comment": "Card fades in prior to flipping over",
-        "active": false,
-        "resizing": false
-      },
-      {
-        "delay": 225,
-        "duration": 150,
-        "color": "#5677FC",
-        "properties": "Rotation (Z Axis)",
-        "easing": {
-          "label": "Outgoing (40% outgoing)",
-          "value": "outgoing"
-        },
-        "comment": "Flip card over in 3d space (horizontal)",
-        "active": false,
-        "resizing": false
-      },
-      {
-        "delay": 300,
-        "duration": 150,
-        "color": "#00BCD4",
-        "properties": "Width, Height, Opacity",
-        "easing": {
-          "label": "Quantum (40% outgoing, 80% incoming)",
-          "value": "quantum"
-        },
-        "comment": "Bring in the detail view of the new item",
-        "active": false,
-        "resizing": false
+  <head>
+    <meta charset="utf-8" />
+    <title>Server Demo</title>
+    <style type="text/css">
+      body {
+        font: 18px arial;
       }
-    ]
-  }
-}</script>
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-      <script>
+      #url {
+        width: 600px;
+      }
+      textarea {
+        height: 200px;
+        width: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="url" />
+    <select name="method" id="method">
+      <option value="GET">GET</option>
+      <option value="POST">POST</option>
+      <option value="PUT">PUT</option>
+      <option value="DELETE">DELETE</option>
+    </select>
+    <input type="button" value="Go" id="go" />
 
-        $(document).ready(function() {
-          $("#url").val(window.location.origin + "/api/spec");
-        });
+    <p>
+      Request Body
+      <input type="button" id="example" value="Example" />
+    </p>
+    <p>
+      <textarea id="requestBody"></textarea>
+    </p>
 
-        $("#example").click(function(e) {
-          $("#requestBody").val($("#exampleText").html());
+    <p>Response <span id="responseCode"></span></p>
+    <p>
+      <textarea id="response"></textarea>
+    </p>
+
+    <script id="exampleText" type="text/template">
+  {
+    "group": null,
+    "title": "Test Spec",
+    "spec": {
+        "divisions": {
+            "majorFrames": 5,
+            "minorFrames": 1,
+            "major": 83.33333333333334,
+            "minor": 16.666666666666668
+        },
+        "canvas": {},
+        "rows": [
+            {
+                "delay": 0,
+                "duration": 75,
+                "color": "#E51C23",
+                "properties": "Opacity",
+                "easing": {
+                    "label": "None (constant velocity)",
+                    "value": "none"
+                },
+                "comment": "Fade out app bar",
+                "detail": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo hic suscipit quasi eveniet corporis veritatis expedita eaque voluptatum qui nihil fugit similique odit nam aut non voluptatem totam alias! Cum magni totam fuga doloremque recusandae.",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 75,
+                "duration": 225,
+                "color": "#9C27B0",
+                "properties": "Opacity",
+                "easing": {
+                    "label": "Incoming (80% incoming)",
+                    "value": "incoming"
+                },
+                "comment": "Card fades in prior to flipping over",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 225,
+                "duration": 150,
+                "color": "#5677FC",
+                "properties": "Rotation (Z Axis)",
+                "easing": {
+                    "label": "Outgoing (40% outgoing)",
+                    "value": "outgoing"
+                },
+                "comment": "Flip card over in 3d space (horizontal)",
+                "active": false,
+                "resizing": false
+            },
+            {
+                "delay": 300,
+                "duration": 150,
+                "color": "#00BCD4",
+                "properties": "Width, Height, Opacity",
+                "easing": {
+                    "label": "Quantum (40% outgoing, 80% incoming)",
+                    "value": "quantum"
+                },
+                "comment": "Bring in the detail view of the new item",
+                "active": false,
+                "resizing": false
+            }
+        ],
+        "videoUrl": null,
+        "title": null,
+        "exactTiming": false,
+        "frames": 30,
+        "fps": 60,
+        "duration": 500.00000000000006
+    },
+    "groupHandle": null,
+    "id": "286810003",
+    "permissions": {
+        "owner": "test",
+        "editors": [],
+        "viewers": [],
+        "privacy": "public"
+    }
+}
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const urlInput = document.getElementById('url');
+        urlInput.value = window.location.origin + '/api/spec';
+      });
+
+      const example = document.getElementById('example');
+      example.addEventListener('click', () => {
+        const requestBody = document.getElementById('requestBody');
+        const exampleText = document.getElementById('exampleText');
+        requestBody.value = exampleText.innerHTML;
+      });
+
+      const go = document.getElementById('go');
+      go.addEventListener('click', () => {
+        const url = document.getElementById('url');
+        const method = document.getElementById('method');
+        const requestBody = document.getElementById('requestBody');
+        const response = document.getElementById('response');
+        const responseCode = document.getElementById('responseCode');
+
+        fetch(url.value, {
+          method: method.value,
+          body: method.value === 'GET' ? undefined :  requestBody.value,
+          headers: {
+            'Content-Type': 'application/json',
+          },
         })
-
-        $("#go").click(function(e) {
-          $.ajax({
-            type: $("#method").val(),
-            url:  $("#url").val(),
-            data: $("#requestBody").val()
-          }).success(function(result) {
-            $("#responseCode").css("color", "black");
-            $("#responseCode").html(200);
-            $("#response").val(result);
-          }).error(function(e) {
-            $("#responseCode").css("color", "red");
-            $("#responseCode").html(e.status);
-            $("#response").val(e.responseText);
+          .then(response => {
+            responseCode.innerHTML = response.status;
+            if (response.status === 200) {
+              responseCode.style.color = 'black';
+            } else {
+              responseCode.style.color = 'red';
+            }
+            return response.text();
+          })
+          .then(text => {
+            response.innerHTML = text;
           });
-        });
-
-      </script>
-    </body>
+      });
+    </script>
+  </body>
 </html>
