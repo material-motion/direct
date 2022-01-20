@@ -40,8 +40,8 @@
     "url": "git+https://github.com/material-motion/direct.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "The Direct Authors (see AUTHORS)",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/material-motion/direct/issues"
   },
