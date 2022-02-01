@@ -227,9 +227,12 @@ app.controller(
           if (!result) return;
           const json = JSON.parse(result as string);
           const current = $scope.data;
-          // Copy id and persmissions
+          // Copy id,persmissions, group,groupHandle
           json.id = current.id;
           json.permissions = current.permissions;
+          json.group = current.group;
+          json.groupHandle = current.groupHandle;
+          // json.title = current.title;
           $scope.data = json;
           $scope.spec = $scope.data.spec;
           $scope.refreshCanvas();

@@ -8,3 +8,4 @@ config.js
 config.yaml
 
 app/ts/config.ts
+spec.json

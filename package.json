@@ -9,7 +9,8 @@
     "ts": "tsc",
     "ts:watch": "tsc --watch",
     "server": "sudo dev_appserver.py .",
-    "prestart": "sudo gcloud components update --version 359.0.0 && npm run ts",
+    "build": "npm run ts",
+    "prestart": "sudo gcloud components update --version 359.0.0 && npm run build",
     "start": "echo \"sudo starting Google AppEngine\"; npm run server",
     "format": "prettier --config .prettierrc.json 'app/ts/*.ts' --write"
   },
