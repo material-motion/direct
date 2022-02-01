@@ -9,7 +9,8 @@
     "ts": "tsc",
     "ts:watch": "tsc --watch",
     "server": "sudo dev_appserver.py .",
-    "start": "npm run ts; echo \"sudo starting Google AppEngine\"; npm run server"
+    "prestart":"sudo gcloud components update --version 359.0.0 && npm run ts",
+    "start": "echo \"sudo starting Google AppEngine\"; npm run server"
   },
   "dependencies": {
     "angular": "~1.4.5",

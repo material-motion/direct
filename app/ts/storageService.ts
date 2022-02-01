@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 declare const angular;
 
@@ -44,14 +44,24 @@ app.service(
     var sanitizedData = function (data) {
       if (typeof data === 'undefined') return data;
       // Clone data
-      var sanitizedData = JSON.parse(JSON.stringify(data));
+      let sanitizedData = JSON.parse(JSON.stringify(data));
 
       // spec properties to remove
-      delete sanitizedData.spec.canvas.width;
-      delete sanitizedData.spec.divisions.minorCount;
-      delete sanitizedData.spec.divisions.minorGap;
-      delete sanitizedData.spec.divisions.majorCount;
-      delete sanitizedData.spec.divisions.majorGap;
+      // try {
+      //   delete sanitizedData.spec.canvas.width;
+      // } catch (error) {}
+      // try {
+      //   delete sanitizedData.spec.divisions.minorCount;
+      // } catch (error) {}
+      // try {
+      //   delete sanitizedData.spec.divisions.minorGap;
+      // } catch (error) {}
+      // try {
+      //   delete sanitizedData.spec.divisions.majorCount;
+      // } catch (error) {}
+      // try {
+      //   delete sanitizedData.spec.divisions.majorGap;
+      // } catch (error) {}
 
       return sanitizedData;
     };
@@ -74,7 +84,7 @@ app.service(
     var save = function (scope) {
       // Update Spec
       Spec.update(
-        { id: scope.data.id },
+        {id: scope.data.id},
         sanitizedData(scope.data),
         function (resp) {
           console.log(resp);
