@@ -32,7 +32,7 @@ var scopeModel;
 
 function onApiLoad() {
   gapi.load('auth');
-  gapi.load('picker', { callback: onPickerApiLoad });
+  gapi.load('picker', {callback: onPickerApiLoad});
 }
 
 function loadPicker(model) {

@@ -9,8 +9,9 @@
     "ts": "tsc",
     "ts:watch": "tsc --watch",
     "server": "sudo dev_appserver.py .",
-    "prestart":"sudo gcloud components update --version 359.0.0 && npm run ts",
-    "start": "echo \"sudo starting Google AppEngine\"; npm run server"
+    "prestart": "sudo gcloud components update --version 359.0.0 && npm run ts",
+    "start": "echo \"sudo starting Google AppEngine\"; npm run server",
+    "format": "prettier --config .prettierrc.json 'app/ts/*.ts' --write"
   },
   "dependencies": {
     "angular": "~1.4.5",
@@ -28,12 +29,13 @@
   },
   "devDependencies": {
     "@types/jquery": "^3.5.5",
-    "gts": "^3.1.0",
+    "@types/node": "^14.11.2",
     "json-server": "^0.9.6",
+    "prettier": "^2.5.1",
     "rimraf": "^2.6.2",
     "serve": "^5.1.2",
     "ts-loader": "^3.2.0",
-    "typescript": "^3.3.1",
+    "typescript": "^4.0.3",
     "webpack": "^3.10.0"
   },
   "repository": {

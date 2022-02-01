@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 /*
  * initializes wrapperElem for specTabCtrl scope
@@ -178,7 +178,7 @@ app.directive('scrubbable', function () {
         // @ts-ignore
         scrubber.draggable({
           axis: 'x',
-          cursorAt: { left: 0 },
+          cursorAt: {left: 0},
           drag: function (evt, ui) {
             ui.position.left = constrainScrubberX(ui.position.left);
             scrubVideoX(ui.position.left);

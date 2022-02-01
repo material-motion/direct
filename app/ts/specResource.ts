@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 app.provider('Spec', function () {
   // @ts-ignore
@@ -83,7 +83,7 @@ app.provider('Spec', function () {
 
               value.id = id;
               localStorageService.set(id, value);
-              callback({ id: id });
+              callback({id: id});
             }, 0);
           },
           update: function (params, value, callback) {

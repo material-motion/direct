@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 app.controller(
   'baseCtrl',
@@ -50,7 +50,7 @@ app.controller(
       ev.stopPropagation();
 
       // Clone project data
-      Spec.get({ id: project.id }, function (data) {
+      Spec.get({id: project.id}, function (data) {
         var newSpec = {
           group: data.group,
           groupHandle: data.groupHandle,
@@ -89,7 +89,7 @@ app.controller(
       $mdDialog.show(confirm).then(
         function () {
           // Delete project
-          Spec.delete({ id: project.id }, function (resp) {
+          Spec.delete({id: project.id}, function (resp) {
             if (callback) {
               callback();
             }
