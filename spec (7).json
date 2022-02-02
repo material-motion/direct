@@ -1,0 +1,111 @@
+{
+  "group": null,
+  "groupHandle": null,
+  "title": "My cool title",
+  "permissions": {
+    "privacy": "public",
+    "owner": "rodydavis",
+    "editors": [],
+    "viewers": []
+  },
+  "spec": {
+    "title": "Details...",
+    "videoUrl": null,
+    "duration": 500.00000000000006,
+    "frames": 30,
+    "fps": 60,
+    "exactTiming": false,
+    "canvas": {
+      "width": 948
+    },
+    "divisions": {
+      "minor": 16.666666666666668,
+      "minorFrames": 1,
+      "major": 83.33333333333334,
+      "majorFrames": 5,
+      "minorCount": 30,
+      "minorGap": 31.6,
+      "majorCount": 6,
+      "majorGap": 158
+    },
+    "rows": [
+      {
+        "delay": 16.666666666666668,
+        "delayFrames": 1,
+        "duration": 100,
+        "durationFrames": 6,
+        "color": "#737373",
+        "properties": null,
+        "easing": {
+          "label": "80% Incoming, 40% Outgoing",
+          "value": "quantum",
+          "$$hashKey": "object:1639",
+          "$$mdSelectId": 2
+        },
+        "easingCustomIncoming": 0,
+        "easingCustomOutgoing": 0,
+        "tag": {
+          "label": "None",
+          "value": "none",
+          "$$hashKey": "object:1668",
+          "$$mdSelectId": 16
+        },
+        "customTag": null,
+        "comment": null,
+        "$$hashKey": "object:276"
+      },
+      {
+        "delay": 183.33333333333334,
+        "delayFrames": 11,
+        "duration": 116.66666666666666,
+        "durationFrames": 7,
+        "color": "#5677FC",
+        "properties": null,
+        "easing": {
+          "label": "80% Incoming, 40% Outgoing",
+          "value": "quantum",
+          "$$hashKey": "object:1639",
+          "$$mdSelectId": 2
+        },
+        "easingCustomIncoming": 0,
+        "easingCustomOutgoing": 0,
+        "tag": {
+          "label": "None",
+          "value": "none",
+          "$$hashKey": "object:1668",
+          "$$mdSelectId": 16
+        },
+        "customTag": null,
+        "comment": "Animation Label",
+        "$$hashKey": "object:484",
+        "detail": "Some cool faces"
+      },
+      {
+        "delay": 100,
+        "delayFrames": 6,
+        "duration": 16.666666666666668,
+        "durationFrames": 1,
+        "color": "#FFC107",
+        "properties": null,
+        "easing": {
+          "label": "Linear",
+          "value": "linear",
+          "$$hashKey": "object:1642",
+          "$$mdSelectId": 5
+        },
+        "easingCustomIncoming": 0,
+        "easingCustomOutgoing": 0,
+        "tag": {
+          "label": "Rotation",
+          "value": "rotation",
+          "$$hashKey": "object:1665",
+          "$$mdSelectId": 13
+        },
+        "customTag": null,
+        "comment": "My Label",
+        "$$hashKey": "object:677"
+      }
+    ]
+  },
+  "id": 3833356
+}

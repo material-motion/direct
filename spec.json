@@ -1,0 +1,90 @@
+{
+    "group": "Android Activity Transitions",
+    "title": "Android T - Activity transition - Backward",
+    "spec": {
+        "divisions": {
+            "minorFrames": 1,
+            "minor": 16.666666666666668,
+            "major": 83.33333333333334,
+            "majorFrames": 5
+        },
+        "canvas": {},
+        "rows": [
+            {
+                "durationFrames": 21,
+                "comment": "End activity fades up with Standard.decelerate easing",
+                "color": "#259B24",
+                "customTag": null,
+                "delayFrames": 6,
+                "delay": 100.00000000000001,
+                "tag": {
+                    "value": "opacity",
+                    "label": "Opacity"
+                },
+                "easingCustomOutgoing": 0,
+                "easingCustomIncoming": 0,
+                "duration": 350,
+                "easing": {
+                    "value": "incoming",
+                    "label": "80% Incoming Only"
+                },
+                "properties": null
+            },
+            {
+                "durationFrames": 6,
+                "comment": "Start activity fades down with Standard.accelerate easing",
+                "color": "#259B24",
+                "customTag": null,
+                "delayFrames": 0,
+                "delay": 0,
+                "tag": {
+                    "value": "opacity",
+                    "label": "Opacity"
+                },
+                "easingCustomOutgoing": 0,
+                "easingCustomIncoming": 0,
+                "duration": 100.00000000000001,
+                "easing": {
+                    "value": "outgoing",
+                    "label": "40% Outgoing Only"
+                },
+                "properties": null
+            },
+            {
+                "durationFrames": 27,
+                "comment": "Content slides right 96dp with Emphasized easing (fastoutextraslowininterpolator)",
+                "color": "#5677FC",
+                "customTag": null,
+                "delayFrames": 0,
+                "delay": 0,
+                "tag": {
+                    "value": "position-x",
+                    "label": "Position-x"
+                },
+                "easingCustomOutgoing": 0,
+                "easingCustomIncoming": 0,
+                "duration": 450.00000000000006,
+                "easing": {
+                    "value": "custom",
+                    "label": "Custom Curve"
+                },
+                "properties": null
+            }
+        ],
+        "videoUrl": "https://drive.google.com/file/d/1CmiotY4rx-SZfQNIUv1yYRiOmKy_qAQs/view?usp=drive_web&resourcekey=0-16r9Loas0BVXRhk_qFt5nw",
+        "title": null,
+        "exactTiming": false,
+        "duration": 500.00000000000006,
+        "fps": 60,
+        "frames": 30,
+        "videoSrc": {}
+    },
+    "groupHandle": "android-activity-transitions",
+    "id": "255640001",
+    "permissions": {
+        "owner": "jnaimark",
+        "editors": [],
+        "viewers": [],
+        "privacy": "public"
+    }
+}

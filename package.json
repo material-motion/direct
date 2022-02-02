@@ -9,9 +9,19 @@
     "ts": "tsc",
     "ts:watch": "tsc --watch",
     "server": "sudo dev_appserver.py .",
-    "start": "npm run ts; echo \"sudo starting Google AppEngine\"; npm run server"
+    "build": "npm run ts",
+    "prestart": "sudo gcloud components update --version 359.0.0 && npm run build",
+    "start": "echo \"sudo starting Google AppEngine\"; npm run server",
+    "dev": "wds --watch --node-resolve",
+    "format": "prettier --config .prettierrc.json 'app/ts/*.ts' --write"
   },
   "dependencies": {
+    "@material/mwc-fab": "^0.25.3",
+    "@material/mwc-icon": "^0.25.3",
+    "@material/mwc-icon-button": "^0.25.3",
+    "@material/mwc-linear-progress": "^0.25.3",
+    "@material/mwc-tab": "^0.25.3",
+    "@material/mwc-tab-bar": "^0.25.3",
     "angular": "~1.4.5",
     "angular-animate": "~1.4.5",
     "angular-aria": "~1.4.5",
@@ -23,16 +33,19 @@
     "angularytics": "0.3.0",
     "hammerjs": "~2.0.4",
     "jquery": "^3.1.1",
-    "js-throttle-debounce": "^0.1.1"
+    "js-throttle-debounce": "^0.1.1",
+    "lit": "^2.1.2"
   },
   "devDependencies": {
     "@types/jquery": "^3.5.5",
-    "gts": "^3.1.0",
+    "@types/node": "^14.11.2",
+    "@web/dev-server": "^0.1.29",
     "json-server": "^0.9.6",
+    "prettier": "^2.5.1",
     "rimraf": "^2.6.2",
     "serve": "^5.1.2",
     "ts-loader": "^3.2.0",
-    "typescript": "^3.3.1",
+    "typescript": "^4.0.3",
     "webpack": "^3.10.0"
   },
   "repository": {

@@ -13,6 +13,8 @@
     "esModuleInterop": true,
     "noImplicitAny": false,
     "skipLibCheck": true,
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true
   },
   "include": [
