@@ -48,6 +48,12 @@ handlers:
   - url: /third_party
     static_dir: third_party
 
+  - url: /third_party/js
+    static_dir: third_party/js
+
+  - url: /third_party/css
+    static_dir: third_party/css
+
   - url: /css
     static_dir: app/css
 

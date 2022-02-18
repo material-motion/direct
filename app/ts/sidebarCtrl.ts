@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 declare const angular;
 
@@ -22,7 +22,7 @@ app.controller('sidebarCtrl', function ($scope, Spec, projectListService) {
   // Updates sidebar with new items and edits
   $scope.$on('refreshSidebar', function () {
     $scope.projectGroups = [];
-    Spec.query({ owner: $scope.user }, function (specs) {
+    Spec.query({owner: $scope.user}, function (specs) {
       $scope.projectGroups = [];
       angular.forEach(specs, function (spec, index) {
         projectListService.addProject($scope, spec);

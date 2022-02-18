@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 declare const angular;
 
@@ -26,7 +26,7 @@ app.controller(
 
     var groupHandle = $routeParams.group.replace(/\s+/g, '-').toLowerCase();
 
-    Spec.query({ group: groupHandle }, function (specs) {
+    Spec.query({group: groupHandle}, function (specs) {
       // Show new project message if necessary
       if (specs.length < 1) {
         $scope.hasProjects = false;

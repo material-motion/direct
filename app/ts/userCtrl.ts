@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 declare const angular;
 
@@ -31,7 +31,7 @@ app.controller(
       $scope.isOwner = false;
     }
 
-    Spec.query({ owner: $routeParams.user }, function (specs) {
+    Spec.query({owner: $routeParams.user}, function (specs) {
       // Show new project message if necessary
       if (specs.length < 1) {
         $scope.hasProjects = false;

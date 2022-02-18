@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import { app } from './app.js';
+import {app} from './app.js';
 
 app.filter('nl2br', [
   '$sce',

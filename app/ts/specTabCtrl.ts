@@ -226,6 +226,13 @@ app.controller(
           const result = e.target?.result;
           if (!result) return;
           const json = JSON.parse(result as string);
+          const current = $scope.data;
+          // Copy id,persmissions, group,groupHandle
+          json.id = current.id;
+          json.permissions = current.permissions;
+          json.group = current.group;
+          json.groupHandle = current.groupHandle;
+          // json.title = current.title;
           $scope.data = json;
           $scope.spec = $scope.data.spec;
           $scope.refreshCanvas();
@@ -238,7 +245,7 @@ app.controller(
 
     $scope.exportJson = function () {
       // Export Json
-      const spec = $scope.spec;
+      const spec = $scope.data;
       const json = JSON.stringify(spec, null, 2);
       const blob = new Blob([json], {type: 'application/json'});
       const url = URL.createObjectURL(blob);
